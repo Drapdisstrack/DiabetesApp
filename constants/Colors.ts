@@ -1,26 +1,31 @@
-/**
- * Below are the colors that are used in the app. The colors are defined in the light and dark mode.
- * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://reactnativeunistyles.vercel.app), etc.
- */
-
-const tintColorLight = '#0a7ea4';
-const tintColorDark = '#fff';
-
-export const Colors = {
-  light: {
-    text: '#11181C',
-    background: '#fff',
-    tint: tintColorLight,
-    icon: '#687076',
-    tabIconDefault: '#687076',
-    tabIconSelected: tintColorLight,
-  },
-  dark: {
-    text: '#ECEDEE',
-    background: '#151718',
-    tint: tintColorDark,
-    icon: '#9BA1A6',
-    tabIconDefault: '#9BA1A6',
-    tabIconSelected: tintColorDark,
-  },
-};
+export default {
+  Brand01:"#4461F2",
+  Brand02:"#4A8CF0",
+  Brand03:"#4BA9D5",
+  Brand04:"#4BB8C7",
+  Brand05:"#4BBFC0",
+  Brand06:"#4BC6B9",
+  Brand07:"#7B7CC7",
+  Brand08:"#AB32D4",
+  Brand09:"#CA00DC",
+  Brand10:"#DABFFF",
+  Background:"#F4F5F9",
+  Success:"#0ECE91",
+  Warning:"#EEA63A",
+  Error:"#E52B67",
+  FontDark:"#0F0F0F",
+  FontMid: "rgba(15, 15, 15, 0.6)",
+  FontLight: "rgba(15, 15, 15, 0.3)",
+  FontWhite:"#FFFFFF",
+  Monochromatic01:"#1A1A1A",
+  Monochromatic02:"#333333",
+  Monochromatic03:"#4D4D4D",
+  Monochromatic04:"#666666",
+  Monochromatic05:"#808080",
+  Monochromatic06:"#999999",
+  Monochromatic07:"#B3B3B3",
+  Monochromatic08:"#CCCCCC",
+  Monochromatic09:"#F2F2F2",
+  Monochromatic10:"#FFFFFF",
+  Shadow: "rgba(0, 0, 0, 0.25)",
+}
