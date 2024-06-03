@@ -1,14 +1,13 @@
-
 import * as React from "react";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 import { Button, IconButton, ProgressBar } from "react-native-paper";
 
-import Card from "./Card";
+import Card from "../components/Card";
 
 const cards = ["🍛", "💊", "🥕", "🏥"];
 
-export default function App() {
+function Memorama() {
   const [board, setBoard] = React.useState(() => generateRandomBoard([...cards, ...cards]));
   const [selectedCards, setSelectedCards] = React.useState([]);
   const [matchedCards, setMatchedCards] = React.useState([]);
@@ -82,6 +81,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#F5F5F5",
     alignItems: "center",
     justifyContent: "start",
+    
+
   },
   header: {
     flexDirection: "row",
@@ -91,12 +92,13 @@ const styles = StyleSheet.create({
     paddingTop: 60,
     paddingHorizontal: 20,
     marginBottom: 10,
+    
   },
   scoreText: {
-    fontSize: 24,
+   
     fontWeight: "700",
     color: "black",
-    fontSize: 30,
+    fontSize: 25,
 
   },
   progressBarContainer: {
@@ -111,20 +113,24 @@ const styles = StyleSheet.create({
   boardContainer: {
     backgroundColor: "white",
     width: 350,
+    height: 630,
     borderRadius: 20,
   },
   board: {
     flexDirection: "row",
     justifyContent: "center",
     flexWrap: "wrap",
+    
+
   },
   titleContainer: {
     flexDirection: "row",
     justifyContent: "flex-start",
     marginLeft: 25,
+    
   },
   title: {
-    fontSize: 30,
+    fontSize: 25,
     fontWeight: "900",
     color: "black",
     marginVertical: 15,
@@ -154,3 +160,5 @@ function shuffle(array) {
   }
   return array;
 }
+
+export default Memorama;

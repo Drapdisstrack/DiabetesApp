@@ -29,13 +29,14 @@ const CarouselSection = ({ onExplorePress }) => {
         index === 0 && { justifyContent: "left", alignItems: "left" }, // Center the first item
       ]}
       onPress={() => {
-        if (index === 0) {
+        if (index === 1) {
           // If the first item is pressed
           onExplorePress && onExplorePress(); // Call onExplorePress function
         }
       }}
     >
-      <Text style={styles.title}>{item.title}</Text>
+      <Text style={styles.title}>{item.title} </Text>
+
       <Image source={item.image} style={styles.carouselImage} />
     </TouchableOpacity>
   );

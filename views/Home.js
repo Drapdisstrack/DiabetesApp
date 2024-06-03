@@ -11,7 +11,7 @@ const MainComponent = () => {
 
   const handleExplorePress = () => {
     // Navegar a la pantalla deseada al presionar el primer item del carrusel
-    navigation.navigate("PageScreen");
+    navigation.navigate("Memorama");
   };
 
   return (
