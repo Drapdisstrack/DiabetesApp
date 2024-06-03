@@ -1,12 +1,12 @@
 // CarouselSection.js
 import React from "react";
-import { View, StyleSheet, Dimensions, Image } from "react-native";
+import { View, StyleSheet, Dimensions, Image, TouchableOpacity } from "react-native";
 import Carousel from "react-native-snap-carousel";
 import { Text } from "react-native-paper";
 
 const { width: screenWidth } = Dimensions.get("window");
 
-const CarouselSection = () => {
+const CarouselSection = ({ onExplorePress }) => {
   const data = [
     {
       title: "Explorando Tu Bienestar",
@@ -21,16 +21,23 @@ const CarouselSection = () => {
     // Add more items as needed
   ];
 
-  const renderItem = ({ item }) => (
-    <View
+  const renderItem = ({ item, index }) => (
+    <TouchableOpacity
       style={[
         styles.item,
         { backgroundColor: item.backgroundColor, borderRadius: 20 },
+        index === 0 && { justifyContent: "left", alignItems: "left" }, // Center the first item
       ]}
+      onPress={() => {
+        if (index === 0) {
+          // If the first item is pressed
+          onExplorePress && onExplorePress(); // Call onExplorePress function
+        }
+      }}
     >
       <Text style={styles.title}>{item.title}</Text>
       <Image source={item.image} style={styles.carouselImage} />
-    </View>
+    </TouchableOpacity>
   );
 
   return (

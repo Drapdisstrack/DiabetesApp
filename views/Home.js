@@ -1,11 +1,19 @@
 // MainComponent.js
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import { IconButton, Text } from "react-native-paper";
+import { IconButton, Text, Button } from "react-native-paper";
 import CarouselSection from "../components/CarouselSection";
 import NewsSection from "../components/NewsSection";
+import { useNavigation } from "@react-navigation/native";
 
 const MainComponent = () => {
+  const navigation = useNavigation();
+
+  const handleExplorePress = () => {
+    // Navegar a la pantalla deseada al presionar el primer item del carrusel
+    navigation.navigate("PageScreen");
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -25,7 +33,8 @@ const MainComponent = () => {
         </Text>
       </View>
 
-      <CarouselSection />
+      <CarouselSection onExplorePress={handleExplorePress} />
+
       <View style={styles.textos}>
         <Text style={[styles.newsHeader, styles.marginTop]}>Noticias</Text>
 
