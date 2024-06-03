@@ -1,7 +1,7 @@
 // App.js
 import React from 'react';
 import { Provider as PaperProvider } from 'react-native-paper';
-import MainComponent from '../Memorama/views/Home';
+import MainComponent from '../DiabetesApp/views/Home';
 
 const App = () => {
   return (
