@@ -3,7 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from '@react-navigation/stack';
 
 import Welcome from "./views/Welcome";
-import SignUp from "./views/Signup";
+import SignUp from "./views/SignUp";
 import SignIn from "./views/SignIn";
 import Home from '../DiabetesApp/views/Home';
 import Memorama from '../DiabetesApp/views/Memorama';

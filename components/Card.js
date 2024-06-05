@@ -34,10 +34,10 @@ const styles = StyleSheet.create({
         borderRadius: 25,
         backgroundColor: "#4A8CF0",
     },
- text: {
-  fontSize: 70,
-  color: "white",
-  textAlign: "center",
-},
+    text: {
+        fontSize: 70,
+        color: "white",
+        textAlign: "center",
+    },
 
 });

@@ -144,7 +144,6 @@ const styles = StyleSheet.create({
 function generateRandomBoard(cards) {
   const board = [];
   const shuffledCards = shuffle([...cards]);
-
   // Genera el tablero con las cartas mezcladas aleatoriamente
   for (let i = 0; i < shuffledCards.length; i++) {
     board.push(shuffledCards[i]);
