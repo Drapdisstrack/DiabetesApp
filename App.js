@@ -6,7 +6,6 @@ import Navigation from './Navigation';
 const App = () => {
   return (
     <PaperProvider>
-     
       <Navigation/>
     </PaperProvider>
   );
