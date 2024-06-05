@@ -8,7 +8,6 @@ import { useNavigation } from "@react-navigation/native";
 
 const MainComponent = () => {
   const navigation = useNavigation();
-
   const handleExplorePress = () => {
     // Navegar a la pantalla deseada al presionar el primer item del carrusel
     navigation.navigate("Memorama");
@@ -24,7 +23,6 @@ const MainComponent = () => {
           size={30}
         />
       </View>
-
       <View style={styles.textos}>
         <Text style={[styles.headerText, styles.margin]}>Buenos Dias,</Text>
         <Text style={[styles.nameText, styles.margin]}>Diego Burgos,</Text>
@@ -32,12 +30,9 @@ const MainComponent = () => {
           Entretenimiento Interactivo
         </Text>
       </View>
-
       <CarouselSection onExplorePress={handleExplorePress} />
-
       <View style={styles.textos}>
         <Text style={[styles.newsHeader, styles.marginTop]}>Noticias</Text>
-
         <NewsSection />
       </View>
     </View>
