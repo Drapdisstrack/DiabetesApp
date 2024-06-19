@@ -6,6 +6,7 @@ export const fontStyle= StyleSheet.create ({
     primaryButtonFont:{
         ...typography.h4,
         color: Colors.FontWhite,
+        
     },
     secondaryButtonFont:{
         ...typography.h4,

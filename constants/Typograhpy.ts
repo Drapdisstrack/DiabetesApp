@@ -44,7 +44,7 @@ export const typography= StyleSheet.create ({
         fontFamily: "Poppins",
         fontSize: 19,
         fontStyle: "normal",
-        fontWeight: 700,
+        fontWeight: 'bold',
         lineHeight: 24, 
         textTransform: "capitalize"
     },

@@ -10,14 +10,14 @@ const Buttons: React.FC = () => {
     return (
         <View style={containerStyles.container}>
             <TouchableOpacity style={buttonStyles.tertiary}>
+            <Image source={require("../assets/images/google.png")} style={iconStyles.buttonIcon} />
                 <View style={containerStyles.textContainer}>
-                    <Image source={require("../assets/images/google.png")} style={iconStyles.buttonIcon} />
                     <Text style={fontStyle.textFieldFont}>Registrate con Google</Text>
                 </View>
             </TouchableOpacity>
             <TouchableOpacity style={buttonStyles.tertiary}>
+            <Image source={require("../assets/images/facebook.png")} style={iconStyles.buttonIcon} />
                 <View style={containerStyles.textContainer}>
-                    <Image source={require("../assets/images/facebook.png")} style={iconStyles.buttonIcon} />
                     <Text style={fontStyle.textFieldFont}>Registrate con Facebook</Text>
                 </View>
             </TouchableOpacity>
