@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native'
 import Colors from './Colors'
 
-export const buttonStyle= StyleSheet.create ({
+export const buttonStyles= StyleSheet.create ({
     primary:{
         width: 327,
         height: 58,
