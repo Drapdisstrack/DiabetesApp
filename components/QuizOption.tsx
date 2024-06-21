@@ -1,6 +1,7 @@
 import { buttonStyles } from "@/constants/Buttons";
 import { Button } from "react-native-paper";
-import { StyleSheet } from "react-native";
+import { StyleSheet, TouchableOpacity, Text } from "react-native";
+import { fontStyle } from "@/constants/FontStyles";
 
 interface QuizOptionProps {
   option: string;
@@ -13,19 +14,19 @@ interface QuizOptionProps {
 
 function QuizOption({ option, index, isSelected, isDisabled, isCorrect, onSelect }: QuizOptionProps) {
   return (
-    <Button
-      mode={isSelected ? "contained" : "outlined"}
+    <TouchableOpacity
+      
       onPress={() => onSelect(index)}
       style={[
         buttonStyles.quizzOption,
         isSelected && isCorrect && buttonStyles.success,
         isDisabled && buttonStyles.error,
       ]}
-      labelStyle={styles.optionLabel}
       disabled={isDisabled}
     >
-      {option}
-    </Button>
+      <Text style={fontStyle.blackTextFont}>{option}</Text>
+      
+    </TouchableOpacity>
   );
 }
 

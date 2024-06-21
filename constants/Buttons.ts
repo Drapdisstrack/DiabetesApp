@@ -101,7 +101,7 @@ export const buttonStyles= StyleSheet.create ({
     },
     quizzOption:{
         alignItems: 'center',
-        width: 327,
+        width: '85%',
         height: 58,
         borderRadius: 20,
         backgroundColor: Colors.Monochromatic10,

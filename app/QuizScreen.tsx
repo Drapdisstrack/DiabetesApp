@@ -9,6 +9,7 @@ import { SafeAreaView, View } from "react-native";
 import { Text } from "react-native-paper";
 import { StyleSheet } from "react-native";
 import Colors from "@/constants/Colors";
+import { TIMER_DURATION } from "@/constants/TimeQuiz";
 
 interface Question {
     question: string;

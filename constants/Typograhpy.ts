@@ -19,7 +19,7 @@ export const typography= StyleSheet.create ({
         //fontFamily: "Poppins",
         fontSize: 32,
         fontStyle: "normal",
-        fontWeight: 700,
+        fontWeight: 'bold',
         lineHeight: 32, 
     },
     h2:{

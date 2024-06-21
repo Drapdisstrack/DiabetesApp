@@ -15,17 +15,13 @@ const WelcomeButtons: React.FC = () => {
                 style={buttonStyles.primary} 
                 onPress={() => router.navigate("SignIn")}
             >
-                <View style={containerStyles.textContainer}>
-                    <Text style={fontStyle.primaryButtonFont}>Iniciar Sesión</Text>
-                </View>
+                <Text style={fontStyle.primaryButtonFont}>Iniciar Sesión</Text>
             </TouchableOpacity>
             <TouchableOpacity 
                 style={buttonStyles.secondary}
                 onPress={() => router.navigate("SignUp")}
             >
-                <View style={containerStyles.textContainer}>
-                    <Text style={fontStyle.secondaryButtonFont}>Registrarse</Text>
-                </View>
+                <Text style={fontStyle.secondaryButtonFont}>Registrarse</Text>
             </TouchableOpacity>
         </View>
     )
