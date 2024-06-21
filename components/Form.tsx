@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, TextInput, StyleSheet, TouchableOpacity, Text } from "react-native";
+import { View, TextInput, TouchableOpacity, Text } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
 import { fontStyle } from "@/constants/FontStyles";
 import { buttonStyles } from "@/constants/Buttons";
