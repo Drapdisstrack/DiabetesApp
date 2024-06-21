@@ -8,7 +8,7 @@ const { width: screenWidth } = Dimensions.get("window");
 interface CarouselItem {
   title: string;
   backgroundColor: string;
-  image: any; 
+  image: any;
 }
 
 interface Props {
@@ -20,7 +20,7 @@ const CarouselSection: React.FC<Props> = ({ onExplorePress }) => {
     {
       title: "Explorando Tu Bienestar",
       backgroundColor: "#4A8CF0",
-      image: require("../assets/images/animal.png"), 
+      image: require("../assets/images/animal.png"),
     },
     {
       title: "Inicia Un Nuevo Memorama",
@@ -56,8 +56,7 @@ const CarouselSection: React.FC<Props> = ({ onExplorePress }) => {
       <Carousel
         data={data}
         renderItem={renderItem}
-        itemWidth={screenWidth * 0.9}
-        inactiveSlideOpacity={1}
+        width={screenWidth * 0.9}
         loop
       />
     </View>

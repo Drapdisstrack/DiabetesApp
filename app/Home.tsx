@@ -23,7 +23,7 @@ const HomeScreen: React.FC = () => {
           Entretenimiento Interactivo
         </Text>
       </View>
-      <CarouselSection onExplorePress={handleExplorePress} />
+      {/* <CarouselSection onExplorePress={handleExplorePress} /> */}
       <View style={styles.textos}>
         <Text style={[styles.newsHeader, styles.marginTop]}>Noticias</Text>
         <NewsSection />
