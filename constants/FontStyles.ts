@@ -15,10 +15,18 @@ export const fontStyle= StyleSheet.create ({
     appNameFont:{
         ...typography.h1,
         color: Colors.Brand01,
+        marginBottom: 20
     },
     comencemosFont:{                  //es la letra del comencemos, solo se usa 1 vez xd
         ...typography.h2,
         color: Colors.FontDark,
+        marginBottom: 10,
+        fontWeight: 'bold',
+    },
+    descriptionFont:{
+        ...typography.h3,
+        color: Colors.Monochromatic05,
+        marginBottom: 30,
     },
     grayTextFont:{           
         ...typography.h3,

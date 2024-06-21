@@ -1,6 +1,6 @@
 import React from "react";
 import { View, StyleSheet, Dimensions, Image, TouchableOpacity } from "react-native";
-import Carousel, { ParallaxImage } from "react-native-snap-carousel";
+import Carousel from "react-native-reanimated-carousel";
 import { Text } from "react-native-paper";
 
 const { width: screenWidth } = Dimensions.get("window");
@@ -50,25 +50,26 @@ const CarouselSection: React.FC<Props> = ({ onExplorePress }) => {
       )}
     </TouchableOpacity>
   );
-  
-  
 
   return (
-    <View>
+    <View style={styles.container}>
       <Carousel
         data={data}
         renderItem={renderItem}
-        sliderWidth={screenWidth}
         itemWidth={screenWidth * 0.9}
-        layout="default"
-        inactiveSlideScale={1}
-        loop={true} // Example addition: Enable looping
+        inactiveSlideOpacity={1}
+        loop
       />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
   item: {
     borderRadius: 20,
     height: 200,

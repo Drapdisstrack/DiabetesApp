@@ -10,7 +10,7 @@ const WelcomeButtons: React.FC = () => {
     const router = useRouter();
 
     return (
-        <View style={containerStyles.container}>
+        <View style={containerStyles.buttonsContainer}>
             <TouchableOpacity 
                 style={buttonStyles.primary} 
                 onPress={() => router.navigate("SignIn")}

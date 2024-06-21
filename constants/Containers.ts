@@ -1,11 +1,12 @@
 import {StyleSheet} from 'react-native'
+import Colors from './Colors'
 
 export const containerStyles= StyleSheet.create ({
     textContainer: {
         flex: 1,
         alignItems: 'center',
     },
-    container: {
+    buttonsContainer: {
         width: '100%',
         alignItems: 'center',
         marginVertical: 30,
@@ -14,4 +15,10 @@ export const containerStyles= StyleSheet.create ({
         shadowOpacity: 0.3,
         shadowRadius: 4,
     },
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: Colors.Background
+      },
 })

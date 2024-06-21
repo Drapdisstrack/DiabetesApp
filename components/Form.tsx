@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { View, TextInput, StyleSheet, TouchableOpacity, Text } from "react-native";
-import { Ionicons } from '@expo/vector-icons'; 
+import { Ionicons } from '@expo/vector-icons';
 
 interface FormProps {
   showNameInput: boolean;
@@ -12,7 +12,7 @@ interface FormState {
 }
 
 class Form extends Component<FormProps, FormState> {
-  
+
   constructor(props: FormProps) {
     super(props);
     this.state = {

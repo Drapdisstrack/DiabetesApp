@@ -8,7 +8,7 @@ import { containerStyles } from "@/constants/Containers";
 const Buttons: React.FC = () => {
 
     return (
-        <View style={containerStyles.container}>
+        <View style={containerStyles.buttonsContainer}>
             <TouchableOpacity style={buttonStyles.tertiary}>
             <Image source={require("../assets/images/google.png")} style={iconStyles.buttonIcon} />
                 <View style={containerStyles.textContainer}>
