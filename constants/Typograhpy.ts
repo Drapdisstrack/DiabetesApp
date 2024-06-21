@@ -2,30 +2,28 @@ import {StyleSheet} from 'react-native'
 
 export const typography= StyleSheet.create ({
     h1:{
-        fontFamily: "Poppins",
-        fontSize: 56,
+        //fontFamily: "Poppins",
+        fontSize: 50,
         fontStyle: "normal",
-        fontWeight: 700,
-        lineHeight: 32, 
-        letterSpacing: 1.12,
+        fontWeight: 'bold',
         textTransform: "capitalize"
     },
     h11:{
-        fontFamily: "Poppins",
+        //fontFamily: "Poppins",
         fontSize: 42,
         fontStyle: "normal",
         fontWeight: 700,
         lineHeight: 32, 
     },
     h12:{
-        fontFamily: "Poppins",
+        //fontFamily: "Poppins",
         fontSize: 32,
         fontStyle: "normal",
-        fontWeight: 700,
+        fontWeight: 'bold',
         lineHeight: 32, 
     },
     h2:{
-        fontFamily: "Poppins",
+        //fontFamily: "Poppins",
         fontSize: 24,
         fontStyle: "normal",
         fontWeight: 500,
@@ -33,7 +31,7 @@ export const typography= StyleSheet.create ({
         textTransform: "capitalize"
     },
     h3:{
-        fontFamily: "Poppins",
+        //fontFamily: "Poppins",
         fontSize: 20,
         fontStyle: "normal",
         fontWeight: 400,
@@ -41,15 +39,15 @@ export const typography= StyleSheet.create ({
         textTransform: "capitalize"
     },
     h4:{
-        fontFamily: "Poppins",
+        //fontFamily: "Poppins",
         fontSize: 19,
         fontStyle: "normal",
-        fontWeight: 700,
+        fontWeight: 'bold',
         lineHeight: 24, 
         textTransform: "capitalize"
     },
     h5:{
-        fontFamily: "Poppins",
+        //fontFamily: "Poppins",
         fontSize: 18,
         fontStyle: "normal",
         fontWeight: 700,
@@ -57,7 +55,7 @@ export const typography= StyleSheet.create ({
         textTransform: "uppercase"
     },
     h6:{
-        fontFamily: "Poppins",
+        //fontFamily: "Poppins",
         fontSize: 16,
         fontStyle: "normal",
         fontWeight: 400,
@@ -65,28 +63,28 @@ export const typography= StyleSheet.create ({
         textTransform: "capitalize"
     },
     pl:{
-        fontFamily: "Poppins",
+        //fontFamily: "Poppins",
         fontSize: 20,
         fontStyle: "normal",
         fontWeight: 400,
         lineHeight: 24, 
     },
     ps:{
-        fontFamily: "Poppins",
+        //fontFamily: "Poppins",
         fontSize: 14,
         fontStyle: "normal",
         fontWeight: 400,
         lineHeight: 20, 
     },
     pl2:{
-        fontFamily: "Poppins",
+        //fontFamily: "Poppins",
         fontSize: 16,
         fontStyle: "normal",
         fontWeight: 500,
         lineHeight: 24, 
     },
     ps2:{
-        fontFamily: "Poppins",
+        //fontFamily: "Poppins",
         fontSize: 14,
         fontStyle: "normal",
         fontWeight: 500,

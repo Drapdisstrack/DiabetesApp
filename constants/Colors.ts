@@ -27,5 +27,5 @@ export default {
   Monochromatic08:"#CCCCCC",
   Monochromatic09:"#F2F2F2",
   Monochromatic10:"#FFFFFF",
-  Shadow: "rgba(0, 0, 0, 0.25)",
+  Shadow: "#000",
 }
