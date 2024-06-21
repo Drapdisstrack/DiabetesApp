@@ -18,6 +18,22 @@ export const buttonStyles= StyleSheet.create ({
         shadowRadius: 4,
         elevation: 5,
     },
+    quizzOption:{
+        alignItems: 'center',
+        width: 327,
+        height: 58,
+        borderRadius: 20,
+        backgroundColor: Colors.Monochromatic10,
+        textAlign: "center",
+        paddingVertical: 15,
+        marginBottom: 25,
+        justifyContent: 'center',
+        shadowColor: Colors.Shadow,
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.3,
+        shadowRadius: 4,
+        elevation: 5,
+    },
     secondary:{
         alignItems: 'center', 
         width: 327,
@@ -93,5 +109,12 @@ export const buttonStyles= StyleSheet.create ({
         shadowRadius: 4,
         elevation: 5,
     },
+    toggleButton: {
+        position: 'absolute',
+        right: 0,
+        bottom: 18,
+        paddingHorizontal: 10,
+        paddingVertical: 10,
+      },
 
 })

@@ -1,8 +1,10 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, TouchableOpacity} from "react-native";
 import Form from "../components/Form";
 import Buttons from "../components/Buttons";
 import { useRouter } from "expo-router";
+import { containerStyles } from "@/constants/Containers";
+import { fontStyle } from "@/constants/FontStyles";
 
 
 const SignUp: React.FC = () => {
@@ -13,35 +15,17 @@ const SignUp: React.FC = () => {
   };   
     
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Registrarse</Text>
+    <View style={containerStyles.container}>
+      <Text style={fontStyle.headlineFont}>Registrarse</Text>
       <Form showNameInput={true} onSubmit={handleSignUp} />
-      <Text style={styles.linkText}>¿Tienes una cuenta? <Text style={styles.link} onPress={() => router.navigate("SignIn")}>Inicia sesión</Text></Text>
+      <Text style={fontStyle.haveAccountText}>¿Tienes una cuenta? {' '}
+        <TouchableOpacity onPress={() => router.navigate("SignIn")}>
+          <Text style={fontStyle.haveAccount2Text}>Inicia Sesión</Text>
+        </TouchableOpacity>
+      </Text>
       <Buttons />
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5F5F5',
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 20,
-  },
-  linkText: {
-    marginTop: 20,
-    color: '#808080',
-  },
-  link: {
-    color: '#4B67FF',
-    fontWeight: 'bold',
-  },
-});
 
 export default SignUp;

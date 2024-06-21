@@ -39,17 +39,31 @@ export const fontStyle= StyleSheet.create ({
     headlineFont:{
         ...typography.h12,
         color: Colors.FontDark,
+        marginBottom: 20,
     },
     textFieldFont:{
         ...typography.ps,
         color: Colors.FontDark,
     },
     haveAccountText:{
+        marginTop: 20,
         ...typography.ps2,
         color: Colors.Monochromatic05,
     },
     haveAccount2Text:{
         ...typography.ps2,
-        color: Colors.Monochromatic02,
+        color: Colors.Brand01,
+        fontWeight: 'bold',
     },
+    textInput: {
+        width: '85%',
+        height: 50,
+        borderColor: '#ddd',
+        borderWidth: 1,
+        borderRadius: 20,
+        paddingLeft: 15,
+        marginVertical: 10,
+        marginBottom: 5,
+        backgroundColor: Colors.FontWhite,
+      },
 })

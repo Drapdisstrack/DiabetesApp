@@ -20,5 +20,20 @@ export const containerStyles= StyleSheet.create ({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: Colors.Background
-      },
+    },
+    image: {
+        width: 175,
+        height: 175,
+        marginBottom: 15,
+    },
+    formContainer: {
+        width: '100%',
+        alignItems: 'center',
+    },
+    passwordContainer: {
+        width: '85%',
+        position: 'relative',
+        marginBottom: 20
+    },
+      
 })
