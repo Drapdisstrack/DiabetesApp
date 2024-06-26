@@ -27,6 +27,7 @@ export const fontStyle= StyleSheet.create ({
         ...typography.h3,
         color: Colors.Monochromatic05,
         marginBottom: 30,
+        textAlign:"center",
     },
     grayTextFont:{           
         ...typography.h3,

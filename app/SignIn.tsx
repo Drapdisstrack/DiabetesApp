@@ -11,7 +11,7 @@ const SignIn: React.FC = () => {
   const router = useRouter();
 
   const handleLogin = () => {
-    router.navigate("QuizScreen")
+    router.navigate("Home")
   };
 
   return (
