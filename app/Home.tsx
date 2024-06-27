@@ -8,7 +8,19 @@ import NewsSection from "@/components/NewsSection";
 const HomeScreen: React.FC = () => {
   const router = useRouter();
 
-  const handleExplorePress = () => {
+  const handleAvatarPress = () => {
+    router.navigate("Profile");
+  };
+
+  const handleExploreWellnessPress = () => {
+    router.navigate("WellnessScreen");
+  };
+
+  const handleMemoramaPress = () => {
+    router.navigate("Memorama");
+  };
+
+  const handleExploreProfilePress = () => {
     router.navigate("Profile");
   };
 
@@ -17,7 +29,7 @@ const HomeScreen: React.FC = () => {
       <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF" />
       <View style={styles.textContainer}>
         <Text style={[styles.headerText, styles.margin]}>Buenos Dias,</Text>
-        <TouchableWithoutFeedback onPress={handleExplorePress}>
+        <TouchableWithoutFeedback onPress={handleAvatarPress}>
           <View style={styles.avatarContainer}>
             <Avatar.Image
               size={55}
@@ -32,7 +44,12 @@ const HomeScreen: React.FC = () => {
           Entretenimiento Interactivo
         </Text>
       </View>
-      <CarouselSection onExplorePress={() => router.navigate("Memorama")} />
+      <CarouselSection 
+        navigationCallbacks={{
+          profile: handleExploreProfilePress,
+          memorama: handleMemoramaPress,
+        }}
+      />
       <View style={styles.newsContainer}>
         <Text style={[styles.newsHeader, styles.marginTop]}>Noticias</Text>
         <NewsSection />

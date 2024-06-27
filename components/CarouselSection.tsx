@@ -11,11 +11,16 @@ interface CarouselItem {
   image: any;
 }
 
-interface Props {
-  onExplorePress?: () => void;
+interface NavigationCallbacks {
+  profile: () => void;
+  memorama: () => void;
 }
 
-const CarouselSection: React.FC<Props> = ({ onExplorePress }) => {
+interface Props {
+  navigationCallbacks: NavigationCallbacks;
+}
+
+const CarouselSection: React.FC<Props> = ({ navigationCallbacks }) => {
   const data: CarouselItem[] = [
     {
       title: "Explorando Tu Bienestar",
@@ -37,8 +42,10 @@ const CarouselSection: React.FC<Props> = ({ onExplorePress }) => {
         index === 0 && { justifyContent: "center", alignItems: "center" },
       ]}
       onPress={() => {
-        if (index === 0 && onExplorePress) {
-          onExplorePress();
+        if (index === 0) {
+          navigationCallbacks.profile();
+        } else if (index === 1) {
+          navigationCallbacks.memorama();
         }
       }}
     >
