@@ -12,7 +12,7 @@ interface CarouselItem {
 }
 
 interface NavigationCallbacks {
-  profile: () => void;
+  quiz: () => void;
   memorama: () => void;
 }
 
@@ -43,7 +43,7 @@ const CarouselSection: React.FC<Props> = ({ navigationCallbacks }) => {
       ]}
       onPress={() => {
         if (index === 0) {
-          navigationCallbacks.profile();
+          navigationCallbacks.quiz();
         } else if (index === 1) {
           navigationCallbacks.memorama();
         }

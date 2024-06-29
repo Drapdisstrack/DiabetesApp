@@ -12,16 +12,13 @@ const HomeScreen: React.FC = () => {
     router.navigate("Profile");
   };
 
-  const handleExploreWellnessPress = () => {
-    router.navigate("WellnessScreen");
-  };
 
   const handleMemoramaPress = () => {
     router.navigate("Memorama");
   };
 
-  const handleExploreProfilePress = () => {
-    router.navigate("Profile");
+  const handleExploreQuizPress = () => {
+    router.navigate("QuizScreen");
   };
 
   return (
@@ -46,7 +43,7 @@ const HomeScreen: React.FC = () => {
       </View>
       <CarouselSection 
         navigationCallbacks={{
-          profile: handleExploreProfilePress,
+          quiz: handleExploreQuizPress,
           memorama: handleMemoramaPress,
         }}
       />
