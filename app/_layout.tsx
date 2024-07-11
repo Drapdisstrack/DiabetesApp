@@ -21,6 +21,9 @@ export default function RootLayout() {
         <Stack.Screen name="EditProfile" options={{ headerShown: false }} />
         <Stack.Screen name="QuizScreen" options={{ headerShown: false }} />
         <Stack.Screen name="index" options={{ title: "Welcome", headerShown: false }} />
+        <Stack.Screen name="GetData" options={{ headerShown: false }} />
+        <Stack.Screen name="Gender" options={{ headerShown: false }} />
+        <Stack.Screen name="Birthdate" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
       </Stack>
     </ThemeProvider>

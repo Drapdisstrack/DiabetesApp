@@ -42,6 +42,12 @@ export const fontStyle= StyleSheet.create ({
         color: Colors.FontDark,
         marginBottom: 20,
     },
+    headlineFontData:{
+        ...typography.h12,
+        color: Colors.FontDark,
+        marginBottom: 20,
+        textAlign: 'center',
+    },
     textFieldFont:{
         ...typography.ps,
         color: Colors.FontDark,

@@ -11,13 +11,13 @@ const SignUp: React.FC = () => {
   const router = useRouter();
 
   const handleSignUp = () => {
-    router.navigate("Home");
+    router.navigate("GetData");
   };   
     
   return (
     <View style={containerStyles.container}>
       <Text style={fontStyle.headlineFont}>Registrarse</Text>
-      <Form showNameInput={true} onSubmit={handleSignUp} />
+      <Form showNameInput={false} onSubmit={handleSignUp} />
       <Text style={fontStyle.haveAccountText}>¿Tienes una cuenta? {' '}
         <TouchableOpacity onPress={() => router.navigate("SignIn")}>
           <Text style={fontStyle.haveAccount2Text}>Inicia Sesión</Text>
