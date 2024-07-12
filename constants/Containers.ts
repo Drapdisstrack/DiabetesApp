@@ -82,8 +82,15 @@ export const containerStyles= StyleSheet.create ({
         width: '85%',
         borderBottomLeftRadius: 20,
         borderBottomRightRadius: 20,
-        backgroundColor: '#FFFFFF', 
+        backgroundColor: Colors.Monochromatic10, 
         padding: 15,
         alignItems: 'center',
     },
+    popupContainer:{
+        width: '85%',
+        borderRadius: 20,
+        backgroundColor: Colors.Monochromatic10, 
+        padding: 15,
+        alignItems: 'center',
+    }
 })
