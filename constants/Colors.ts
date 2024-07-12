@@ -13,6 +13,8 @@ export default {
   Success:"#0ECE91",
   Warning:"#EEA63A",
   Error:"#E52B67",
+  Girl: "#F1A2F2",
+  Boy: "#869CF7",
   FontDark:"#0F0F0F",
   FontMid: "rgba(15, 15, 15, 0.6)",
   FontLight: "rgba(15, 15, 15, 0.3)",
