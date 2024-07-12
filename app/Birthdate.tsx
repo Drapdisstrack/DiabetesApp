@@ -7,6 +7,8 @@ import NextButton from "../components/NextButton";
 import { containerStyles } from "@/constants/Containers";
 import { fontStyle } from "@/constants/FontStyles";
 import { buttonStyles } from "@/constants/Buttons";
+import { auth, db } from "./auth/firebase";
+import { doc, updateDoc } from "firebase/firestore";
 
 const BirthdateScreen: React.FC = () => {
   const router = useRouter(); 
@@ -24,10 +26,15 @@ const BirthdateScreen: React.FC = () => {
     }
   };
 
-  const handleSubmit = () => {
-    // Lógica para manejar el submit de la fecha de nacimiento
-    console.log({ day, month, year });
-    router.navigate("Home"); 
+  const handleSubmit = async () => {
+    const user = auth.currentUser;
+    if (user) {
+      const userDoc = doc(db, "users", user.uid);
+      await updateDoc(userDoc, {
+        birthdate: `${year}-${month}-${day}`
+      });
+      router.navigate("Home");
+    }
   };
 
   return (
