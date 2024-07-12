@@ -3,13 +3,12 @@ import SuccessPopup from "@/components/SuccessPopup";
 import TimeoutPopup from "@/components/TimeoutPopup";
 import Timer from "@/components/Timer";
 import ProgressBar from "@/components/progressBar";
-import { typography } from "@/constants/Typograhpy";
 import useQuiz from "@/hooks/useQuiz";
 import { SafeAreaView, View } from "react-native";
 import { Text } from "react-native-paper";
-import { StyleSheet } from "react-native";
-import Colors from "@/constants/Colors";
 import { TIMER_DURATION } from "@/constants/TimeQuiz";
+import { containerStyles } from "@/constants/Containers";
+import { fontStyle } from "@/constants/FontStyles";
 
 interface Question {
     question: string;
@@ -55,9 +54,9 @@ export default function QuizScreen() {
     const { question, options, correctAnswer } = questions[currentQuestion];
   
     return (
-      <SafeAreaView style={styles.container}>
-        <View style={styles.content}>
-          <Text style={typography.h12}>
+      <SafeAreaView style={containerStyles.container}>
+        <View style={containerStyles.container}>
+          <Text style={fontStyle.headlineFont}>
             Pregunta {currentQuestion + 1}/{questions.length}
           </Text>
           <View>
@@ -68,10 +67,10 @@ export default function QuizScreen() {
             />
             <ProgressBar current={currentQuestion + 1} total={questions.length} />
           </View>
-          <View style={styles.questionContainer}>
-            <Text style={styles.questionText}>{question}</Text>
+          <View style={containerStyles.questionContainer}>
+            <Text style={fontStyle.primaryButtonFont}>{question}</Text>
           </View>
-          <View style={styles.optionsContainer}>
+          <View style={containerStyles.optionsContainer}>
             {options.map((option, index) => (
               <QuizOption
                 key={index}
@@ -89,41 +88,4 @@ export default function QuizScreen() {
         <TimeoutPopup visible={showTimeout} onClose={handleRestartQuiz} />
       </SafeAreaView>
     );
-  }
-
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: "#FFFFFF",
-    },
-    content: {
-      flex: 1,
-      padding: 16,
-      justifyContent: "space-between",
-      alignItems: "center",
-    },
-    questionContainer: {
-      backgroundColor: Colors.Brand01,
-      borderRadius: 20,
-      padding: 16,
-      marginBottom: 24,
-      width: 367,
-      height: 176,
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "center",
-      textAlignVertical: "center",
-    },
-    questionText: {
-      color: "#FFFFFF",
-      fontSize: 18,
-      textAlign: "center",
-    },
-    optionsContainer: {
-      display: "flex",
-      width: 327,
-      flexDirection: "column",
-      alignItems: "center",
-      gap: 30,
-    },
-  });
+  };

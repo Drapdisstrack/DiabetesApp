@@ -6,7 +6,7 @@ export const fontStyle= StyleSheet.create ({
     primaryButtonFont:{
         ...typography.h4,
         color: Colors.FontWhite,
-        
+        textAlign: 'center',
     },
     secondaryButtonFont:{
         ...typography.h4,
@@ -36,6 +36,7 @@ export const fontStyle= StyleSheet.create ({
     blackTextFont:{
         ...typography.h3,
         color: Colors.FontDark,
+        fontWeight: 'medium'
     },
     headlineFont:{
         ...typography.h12,

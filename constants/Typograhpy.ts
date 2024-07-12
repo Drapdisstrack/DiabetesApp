@@ -36,7 +36,7 @@ export const typography = StyleSheet.create({
     fontStyle: 'normal',
     fontWeight: '400', // Corrige aquí
     lineHeight: 24,
-    textTransform: 'capitalize',
+    //textTransform: 'capitalize',
   },
   h4: {
     //fontFamily: "Poppins",
@@ -44,7 +44,7 @@ export const typography = StyleSheet.create({
     fontStyle: 'normal',
     fontWeight: 'bold',
     lineHeight: 24,
-    textTransform: 'capitalize',
+    //textTransform: 'capitalize',
   },
   h5: {
     //fontFamily: "Poppins",

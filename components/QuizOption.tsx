@@ -1,6 +1,5 @@
 import { buttonStyles } from "@/constants/Buttons";
-import { Button } from "react-native-paper";
-import { StyleSheet, TouchableOpacity, Text } from "react-native";
+import { TouchableOpacity, Text } from "react-native";
 import { fontStyle } from "@/constants/FontStyles";
 
 interface QuizOptionProps {
@@ -28,12 +27,6 @@ function QuizOption({ option, index, isSelected, isDisabled, isCorrect, onSelect
       
     </TouchableOpacity>
   );
-}
-
-const styles = StyleSheet.create({
-  optionLabel: {
-    fontSize: 16,
-  },
-});
+};
 
 export default QuizOption;
