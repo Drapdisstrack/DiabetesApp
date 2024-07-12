@@ -5,6 +5,8 @@ import NextButton from "../components/NextButton";
 import { containerStyles } from "@/constants/Containers";
 import { fontStyle } from "@/constants/FontStyles";
 import { buttonStyles } from "@/constants/Buttons";
+import { auth, db } from "./auth/firebase";
+import { doc, updateDoc } from "firebase/firestore";
 
 interface GenderProps {
   navigation: any;
@@ -18,11 +20,15 @@ const Gender: React.FC<GenderProps> = ({ navigation }) => {
     setSelectedGender(gender);
   };
 
-  const handleSubmit = () => {
-    // Lógica para manejar el submit de la selección de género
-    //console.log(selectedGender);
-    router.navigate("Birthdate")
-    // Navegar a otra pantalla si es necesario
+  const handleSubmit = async () => {
+    const user = auth.currentUser;
+    if (user && selectedGender) {
+      const userDoc = doc(db, "users", user.uid);
+      await updateDoc(userDoc, {
+        gender: selectedGender
+      });
+      router.navigate("Birthdate");
+    }
   };
 
   return (

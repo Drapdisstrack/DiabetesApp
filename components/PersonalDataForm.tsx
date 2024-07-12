@@ -1,50 +1,61 @@
-import React, { Component } from "react";
-import { View, TextInput, StyleSheet, KeyboardAvoidingView, Platform } from "react-native";
+import React, { useState } from "react";
+import {
+  View,
+  TextInput,
+  StyleSheet,
+  KeyboardAvoidingView,
+  Platform,
+  TouchableOpacity,
+  Text,
+} from "react-native";
 import { fontStyle } from "@/constants/FontStyles";
-import { buttonStyles } from "@/constants/Buttons";
 import { containerStyles } from "@/constants/Containers";
+import { buttonStyles } from "@/constants/Buttons";
 
 interface PersonalDataFormProps {
-  //onChange: (field: string, value: string) => void;
-  name: string;
-  surname: string;
-  state: string;
+  onSubmit: (name: string, surname: string, state: string) => void;
 }
 
-class PersonalDataForm extends Component<PersonalDataFormProps> {
-  render() {
-    const {name, surname, state } = this.props;
+const PersonalDataForm: React.FC<PersonalDataFormProps> = ({ onSubmit }) => {
+  const [name, setName] = useState("");
+  const [surname, setSurname] = useState("");
+  const [state, setState] = useState("");
 
-    return (
-      <KeyboardAvoidingView
-        behavior={Platform.OS === "ios" ? "padding" : "height"}
-        style={containerStyles.formContainer}
-      >
-        <TextInput
-          style={fontStyle.textInput}
-          placeholder="Nombre(s)"
-          autoCapitalize="words"
-          value={name}
-          //onChangeText={(value) => onChange('name', value)}
-        />
-        <TextInput
-          style={fontStyle.textInput}
-          placeholder="Primer Apellido"
-          autoCapitalize="words"
-          value={surname}
-          //onChangeText={(value) => onChange('surname', value)}
-        />
-        <TextInput
-          style={fontStyle.textInput}
-          placeholder="Estado"
-          autoCapitalize="words"
-          value={state}
-          //onChangeText={(value) => onChange('state', value)}
-        />
-      </KeyboardAvoidingView>
-    );
-  }
-}
+  const handleSubmit = () => {
+    onSubmit(name, surname, state);
+  };
 
+  return (
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={containerStyles.formContainer}
+    >
+      <TextInput
+        style={fontStyle.textInput}
+        placeholder="Nombre(s)"
+        autoCapitalize="words"
+        value={name}
+        onChangeText={setName}
+      />
+      <TextInput
+        style={fontStyle.textInput}
+        placeholder="Primer Apellido"
+        autoCapitalize="words"
+        value={surname}
+        onChangeText={setSurname}
+      />
+      <TextInput
+        style={fontStyle.textInput}
+        placeholder="Estado"
+        autoCapitalize="words"
+        value={state}
+        onChangeText={setState}
+      />
+      <TouchableOpacity style={buttonStyles.next} onPress={handleSubmit}>
+        <Text style={fontStyle.primaryButtonFont}>Siguiente</Text>
+      </TouchableOpacity>
+    </KeyboardAvoidingView>
+  );
+};
 
 export default PersonalDataForm;
