@@ -11,11 +11,16 @@ interface CarouselItem {
   image: any;
 }
 
-interface Props {
-  onExplorePress?: () => void;
+interface NavigationCallbacks {
+  quiz: () => void;
+  memorama: () => void;
 }
 
-const CarouselSection: React.FC<Props> = ({ onExplorePress }) => {
+interface Props {
+  navigationCallbacks: NavigationCallbacks;
+}
+
+const CarouselSection: React.FC<Props> = ({ navigationCallbacks }) => {
   const data: CarouselItem[] = [
     {
       title: "Explorando Tu Bienestar",
@@ -34,11 +39,13 @@ const CarouselSection: React.FC<Props> = ({ onExplorePress }) => {
       style={[
         styles.item,
         { backgroundColor: item.backgroundColor, borderRadius: 20 },
-        index === 0 && { justifyContent: "flex-start", alignItems: "flex-start" },
+        index === 0 && { justifyContent: "center", alignItems: "center" },
       ]}
       onPress={() => {
-        if (index === 0 && onExplorePress) {
-          onExplorePress();
+        if (index === 0) {
+          navigationCallbacks.quiz();
+        } else if (index === 1) {
+          navigationCallbacks.memorama();
         }
       }}
     >
@@ -46,7 +53,7 @@ const CarouselSection: React.FC<Props> = ({ onExplorePress }) => {
       {item.image ? (
         <Image source={item.image} style={styles.carouselImage} />
       ) : (
-        <Text>Image Not Found</Text> // Example fallback for debugging
+        <Text>Image Not Found</Text>
       )}
     </TouchableOpacity>
   );
@@ -65,30 +72,38 @@ const CarouselSection: React.FC<Props> = ({ onExplorePress }) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    height: 210, // Altura fija, puedes ajustarla según tus necesidades
     justifyContent: "center",
     alignItems: "center",
   },
   item: {
     borderRadius: 20,
     height: 200,
+    width: screenWidth * 0.89, // Ajusta el ancho del ítem
     padding: 20,
     marginTop: 10,
     marginRight: 10,
+    justifyContent: "center", // Centra el contenido verticalmente
+    alignItems: "center", // Centra el contenido horizontalmente
     position: "relative",
+    overflow: "hidden", // Asegura que el contenido no se desborde
   },
   carouselImage: {
     position: "absolute",
-    bottom: -30,
-    right: 10,
-    width: 175,
-    height: 175,
-    resizeMode: "contain",
+    bottom: -20, // Alinea la imagen en la parte inferior
+    right: 0, // Alinea la imagen a la derecha
+    width: "50%", // Ajusta el ancho para que ocupe la mitad del contorno
+    height: "100%", // Asegura que la imagen ocupe toda la altura del contorno
+    resizeMode: "contain", // Ajusta la imagen dentro del contorno
   },
   title: {
     fontSize: 24,
     fontWeight: "bold",
     color: "white",
+    textAlign: "left", // Alinea el texto a la izquierda
+    position: "absolute", // Posiciona el título
+    top: 20, // Ajusta según sea necesario
+    left: 20, // Ajusta según sea necesario
   },
 });
 
