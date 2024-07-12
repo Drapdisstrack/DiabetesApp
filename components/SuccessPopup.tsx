@@ -1,6 +1,8 @@
+import { containerStyles } from '@/constants/Containers';
+import { fontStyle } from '@/constants/FontStyles';
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import { Modal, Title, Button } from 'react-native-paper';
+import { View, Image} from 'react-native';
+import { Modal, Title} from 'react-native-paper';
 
 interface Props {
   visible: boolean;
@@ -9,22 +11,17 @@ interface Props {
 
 export default function SuccessPopup({ visible, onClose }: Props) {
   return (
-    <Modal visible={visible} onDismiss={onClose} contentContainerStyle={styles.container}>
-      <View>
-        <Title>¡Buen trabajo!</Title>
-        <Button onPress={onClose}>Cerrar</Button>
+    <Modal visible={visible} onDismiss={onClose} contentContainerStyle={containerStyles.simpleContainer}>
+      <View style={containerStyles.blueTopContainer}>
+        <Image
+          source={require('@/assets/images/trophy.png')} 
+          style={containerStyles.trophyImage}
+        />
       </View>
+      <View style={containerStyles.whiteBottomContainer}>
+        <Title style={fontStyle.headlineFont}>¡Buen Trabajo!</Title>
+        <Image source={require('@/assets/images/estrellas.png')} style={containerStyles.starImage} />        
+      </View>     
     </Modal>
   );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: 'white',
-    padding: 22,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 4,
-    borderColor: 'rgba(0, 0, 0, 0.1)',
-  },
-});
+};

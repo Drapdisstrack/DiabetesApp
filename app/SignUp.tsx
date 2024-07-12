@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, TouchableOpacity} from "react-native";
+import { View, Text, TouchableOpacity, Image} from "react-native";
 import Form from "../components/Form";
 import Buttons from "../components/Buttons";
 import { useRouter } from "expo-router";
@@ -16,6 +16,7 @@ const SignUp: React.FC = () => {
     
   return (
     <View style={containerStyles.container}>
+      <Image source={require("../assets/images/registrarse.png")} style={containerStyles.image} />
       <Text style={fontStyle.headlineFont}>Registrarse</Text>
       <Form showNameInput={false} onSubmit={handleSignUp} />
       <Text style={fontStyle.haveAccountText}>¿Tienes una cuenta? {' '}
