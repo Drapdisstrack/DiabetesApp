@@ -1,27 +1,51 @@
-import { containerStyles } from '@/constants/Containers';
-import { fontStyle } from '@/constants/FontStyles';
 import React from 'react';
-import { View, Image} from 'react-native';
-import { Button, Modal, Title} from 'react-native-paper';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import Modal from 'react-native-modal';
+import { buttonStyles } from '@/constants/Buttons';
 
-interface Props {
-  visible: boolean;
+interface SuccessPopupProps {
+  isVisible: boolean;
+  message: string;
   onClose: () => void;
 }
 
-export default function SuccessPopup({ visible, onClose }: Props) {
+const SuccessPopup: React.FC<SuccessPopupProps> = ({ isVisible, message, onClose }) => {
   return (
-    <Modal visible={visible} onDismiss={onClose} contentContainerStyle={containerStyles.simpleContainer}>
-      <View style={containerStyles.blueTopContainer}>
-        <Image
-          source={require('@/assets/images/trophy.png')} 
-          style={containerStyles.trophyImage}
-        />
+    <Modal isVisible={isVisible} onBackdropPress={onClose} onBackButtonPress={onClose}>
+      <View style={styles.modalContainer}>
+        <Text style={styles.successText}>Éxito</Text>
+        <Text style={styles.messageText}>{message}</Text>
+        <TouchableOpacity style={buttonStyles.success} onPress={onClose}>
+          <Text style={styles.closeButtonText}>Cerrar</Text>
+        </TouchableOpacity>
       </View>
-      <View style={containerStyles.whiteBottomContainer}>
-        <Title style={fontStyle.headlineFont}>¡Buen Trabajo!</Title>
-        <Image source={require('@/assets/images/estrellas.png')} style={containerStyles.starImage} />  
-      </View>     
     </Modal>
   );
 };
+
+const styles = StyleSheet.create({
+  modalContainer: {
+    backgroundColor: 'white',
+    padding: 20,
+    borderRadius: 10,
+    alignItems: 'center',
+  },
+  successText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: 'green',
+    marginBottom: 10,
+  },
+  messageText: {
+    fontSize: 16,
+    color: 'black',
+    textAlign: 'center',
+    marginBottom: 20,
+  },
+  closeButtonText: {
+    color: 'white',
+    fontSize: 16,
+  },
+});
+
+export default SuccessPopup;
