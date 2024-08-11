@@ -26,11 +26,15 @@ const SignIn: React.FC = () => {
     setError(null);
   };
 
+  const handleError = (message: string) => {
+    setError(message);
+  };
+
   return (
     <View style={containerStyles.container}>
       <Image source={require("../assets/images/iniciosesion.png")} style={containerStyles.image} />
       <Text style={fontStyle.headlineFont}>Iniciar sesión</Text>
-      <Form showNameInput={false} onSubmit={handleLogin} />
+      <Form showNameInput={false} showConfirmPassword={false} onSubmit={handleLogin} onError={handleError} />
       <Text style={fontStyle.haveAccountText}>
         No tienes una cuenta?{' '}
         <TouchableOpacity onPress={() => router.navigate("SignUp")}>
