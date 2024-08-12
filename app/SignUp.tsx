@@ -41,7 +41,7 @@ const SignUp: React.FC = () => {
     <View style={containerStyles.container}>
       <Image source={require("../assets/images/registrarse.png")} style={containerStyles.image} />
       <Text style={fontStyle.headlineFont}>Registrarse</Text>
-      <Form showNameInput={false} showConfirmPassword={true} onSubmit={handleSignUp} onError={handleError} />
+      <Form showNameInput={false} isSignUp={true} onSubmit={handleSignUp} onError={handleError} />
       <Text style={fontStyle.haveAccountText}>
         ¿Tienes una cuenta?{" "}
         <TouchableOpacity onPress={() => router.navigate("SignIn")}>

@@ -7,7 +7,7 @@ import { containerStyles } from "@/constants/Containers";
 
 interface FormProps {
   showNameInput: boolean;
-  showConfirmPassword: boolean;
+  isSignUp: boolean;
   onSubmit: (email: string, password: string) => void;
   onError: (message: string) => void;
 }
@@ -55,6 +55,7 @@ class Form extends Component<FormProps, FormState> {
 
   handleSubmit = () => {
     const { email, password, confirmPassword } = this.state;
+    const { isSignUp } = this.props;
 
     // Validations
     try {
@@ -64,7 +65,7 @@ class Form extends Component<FormProps, FormState> {
       if (password.length < 6) {
         throw new Error("La contraseña debe tener al menos 6 caracteres");
       }
-      if (password !== confirmPassword) {
+      if (isSignUp && password !== confirmPassword) {
         throw new Error("Las contraseñas no coinciden");
       }
 
@@ -79,7 +80,7 @@ class Form extends Component<FormProps, FormState> {
   }
 
   render() {
-    const { showNameInput, showConfirmPassword } = this.props;
+    const { showNameInput, isSignUp } = this.props;
     return (
       <View style={containerStyles.formContainer}>
         {showNameInput && (
@@ -111,7 +112,7 @@ class Form extends Component<FormProps, FormState> {
           </TouchableOpacity>
         </View>
   
-        {showConfirmPassword && (
+        {isSignUp && (
           <View style={containerStyles.passwordContainer}>
             <TextInput
               style={fontStyle.textInput}

@@ -29,7 +29,7 @@ const SignIn: React.FC = () => {
     <View style={containerStyles.container}>
       <Image source={require('@/assets/images/iniciosesion.png')} style={containerStyles.image} />
       <Text style={fontStyle.headlineFont}>Iniciar sesión</Text>
-      <Form showNameInput={false} showConfirmPassword={false} onSubmit={handleLogin} onError={setError} />
+      <Form showNameInput={false} isSignUp={false} onSubmit={handleLogin} onError={setError} />
       <Text style={fontStyle.haveAccountText}>
         No tienes una cuenta?{' '}
         <TouchableOpacity onPress={() => router.navigate("SignUp")}>
