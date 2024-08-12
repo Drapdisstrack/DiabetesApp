@@ -1,5 +1,5 @@
 import QuizOption from "@/components/QuizOption";
-import SuccessPopup from "@/components/SuccessPopup";
+import SuccessPopup from "@/components/goodJobPopup";
 import TimeoutPopup from "@/components/TimeoutPopup";
 import Timer from "@/components/Timer";
 import ProgressBar from "@/components/progressBar";

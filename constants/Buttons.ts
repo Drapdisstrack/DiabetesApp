@@ -94,10 +94,10 @@ export const buttonStyles= StyleSheet.create ({
     },
     toggleButton: {
         position: 'absolute',
-        right: 0,
-        bottom: 18,
+        right: 10,
+        top: '30%',
         paddingHorizontal: 10,
-        paddingVertical: 10,
+        paddingVertical: 5,
     },
     quizzOption:{
         alignItems: 'center',

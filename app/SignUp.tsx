@@ -33,11 +33,15 @@ const SignUp: React.FC = () => {
     setError(null);
   };
 
+  const handleError = (message: string) => {
+    setError(message);
+  };
+
   return (
     <View style={containerStyles.container}>
       <Image source={require("../assets/images/registrarse.png")} style={containerStyles.image} />
       <Text style={fontStyle.headlineFont}>Registrarse</Text>
-      <Form showNameInput={false} onSubmit={handleSignUp} />
+      <Form showNameInput={false} isSignUp={true} onSubmit={handleSignUp} onError={handleError} />
       <Text style={fontStyle.haveAccountText}>
         ¿Tienes una cuenta?{" "}
         <TouchableOpacity onPress={() => router.navigate("SignIn")}>

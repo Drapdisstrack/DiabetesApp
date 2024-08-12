@@ -1,15 +1,9 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { getAuth } from "firebase/auth";
+import { getAnalytics, isSupported } from 'firebase/analytics';
+import { initializeAuth, getReactNativePersistence } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyD4GNLfuoS42ve2J8v79ShBnLyFQUfiqwA",
   authDomain: "diabetesapp-b04d6.firebaseapp.com",
@@ -22,8 +16,24 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 
-export const auth = getAuth(app);
+isSupported().then((supported) => {
+  if (supported) {
+    const analytics = getAnalytics(app);
+    console.log('Firebase Analytics inicializado');
+  } else {
+    console.log('Firebase Analytics no es compatible en este entorno');
+  }
+}).catch((error) => {
+  console.error('Error al comprobar compatibilidad con Firebase Analytics:', error);
+});
+
+// Initialize Firebase Auth with persistence
+const auth = initializeAuth(app, {
+  persistence: getReactNativePersistence(AsyncStorage)
+});
+
+export { auth };
+
+// Initialize Firestore
 export const db = getFirestore(app);
-
