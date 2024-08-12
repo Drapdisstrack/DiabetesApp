@@ -8,6 +8,7 @@ import { fontStyle } from "@/constants/FontStyles";
 import { auth, db } from "./auth/firebase";
 import { getDoc, doc, updateDoc } from "firebase/firestore";
 import { buttonStyles } from "@/constants/Buttons";
+import LogOutButton from "@/components/LogOutButton";
 
 const Profile: React.FC = () => {
   const router = useRouter();
@@ -43,6 +44,10 @@ const Profile: React.FC = () => {
     }
   };
 
+  const handleLogOut = () => {
+    router.navigate("SignIn");
+  };
+
   return (
     <View style={containerStyles.container}>
       <Avatar.Image size={150} source={require("../assets/images/profile.png")} />
@@ -61,6 +66,9 @@ const Profile: React.FC = () => {
           <Text style={fontStyle.primaryButtonFont}>Editar Perfil</Text>
         </TouchableOpacity>
       )}
+
+      <LogOutButton onLogOut={handleLogOut} />
+
     </View>
   );
 };
