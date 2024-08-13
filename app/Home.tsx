@@ -18,7 +18,7 @@ const HomeScreen: React.FC = () => {
   };
 
   const handleExploreQuizPress = () => {
-    router.navigate("QuizScreen");
+    router.navigate("QuizMenuScreen");
   };
 
   return (

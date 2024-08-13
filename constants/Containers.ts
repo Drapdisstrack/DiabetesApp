@@ -30,6 +30,11 @@ export const containerStyles= StyleSheet.create ({
         height: 175,
         marginBottom: 15,
     },
+    levelCompletedImage: {
+        width: 412,
+        height: 469,
+        marginBottom: 50,
+    },
     formContainer: {
         width: '100%',
         alignItems: 'center',
