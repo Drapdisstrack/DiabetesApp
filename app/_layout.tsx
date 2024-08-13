@@ -19,6 +19,8 @@ export default function RootLayout() {
         <Stack.Screen name="Home" options={{ headerShown: false }} />
         <Stack.Screen name="Profile" options={{ headerShown: false }} />
         <Stack.Screen name="QuizScreen" options={{ headerShown: false }} />
+        <Stack.Screen name="QuizMenuScreen" options={{ headerShown: false }} />
+        <Stack.Screen name="LevelCompleted"  options={{ headerShown: false }}/>
         <Stack.Screen name="index" options={{ title: "Welcome", headerShown: false }} />
         <Stack.Screen name="GetData" options={{ headerShown: false }} />
         <Stack.Screen name="Gender" options={{ headerShown: false }} />
