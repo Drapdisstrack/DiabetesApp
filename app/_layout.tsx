@@ -23,6 +23,7 @@ export default function RootLayout() {
         <Stack.Screen name="GetData" options={{ headerShown: false }} />
         <Stack.Screen name="Gender" options={{ headerShown: false }} />
         <Stack.Screen name="Birthdate" options={{ headerShown: false }} />
+        <Stack.Screen name="NewsDetailScreen" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
       </Stack>
     </ThemeProvider>

@@ -1,12 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { View, StyleSheet, StatusBar, TouchableWithoutFeedback } from "react-native";
 import { Avatar, Text } from "react-native-paper";
 import { useRouter } from "expo-router";
 import CarouselSection from "@/components/CarouselSection";
 import NewsSection from "@/components/NewsSection";
+import { doc, getDoc } from "firebase/firestore";
+import { auth, db } from "./auth/firebase";
 
 const HomeScreen: React.FC = () => {
   const router = useRouter();
+  const [userData, setUserData] = useState<any>(null);
+
+
+  useEffect(() => {
+    fetchUserData();
+  }, []);
+
+  const fetchUserData = async () => {
+    const user = auth.currentUser;
+    if (user) {
+      const userDocRef = doc(db, "users", user.uid);
+      const userDocSnap = await getDoc(userDocRef);
+      if (userDocSnap.exists()) {
+        setUserData(userDocSnap.data());
+      }
+    }
+  };
 
   const handleAvatarPress = () => {
     router.navigate("Profile");
@@ -36,7 +55,7 @@ const HomeScreen: React.FC = () => {
         </TouchableWithoutFeedback>
       </View>
       <View style={styles.nameContainer}>
-        <Text style={[styles.nameText, styles.margin]}>Diego Burgos,</Text>
+        <Text style={[styles.nameText, styles.margin]}>{userData?.name},</Text>
         <Text style={[styles.headerText, styles.margin]}>
           Entretenimiento Interactivo
         </Text>
