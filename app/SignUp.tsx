@@ -39,15 +39,17 @@ const SignUp: React.FC = () => {
 
   return (
     <View style={containerStyles.container}>
-      <Image source={require("../assets/images/registrarse.png")} style={containerStyles.image} />
+      <Image source={require("../assets/images/registrarse.png")} style={containerStyles.imageRegister} />
       <Text style={fontStyle.headlineFont}>Registrarse</Text>
       <Form showNameInput={false} isSignUp={true} onSubmit={handleSignUp} onError={handleError} />
-      <Text style={fontStyle.haveAccountText}>
-        ¿Tienes una cuenta?{" "}
-        <TouchableOpacity onPress={() => router.navigate("SignIn")}>
-          <Text style={fontStyle.haveAccount2Text}>Inicia Sesión</Text>
-        </TouchableOpacity>
-      </Text>
+      <View style={containerStyles.questionContainer1}>
+        <Text style={fontStyle.haveAccountText}>
+          ¿Ya tienes una cuenta?{" "} </Text>
+          <TouchableOpacity onPress={() => router.navigate("SignIn")}>
+            <Text style={fontStyle.haveAccount2Text}>Inicia Sesión</Text>
+          </TouchableOpacity>
+      </View>
+      
       <Buttons />
       <ErrorPopup
         isVisible={!!error}
