@@ -9,6 +9,7 @@ export const buttonStyles= StyleSheet.create ({
         backgroundColor: Colors.Brand01,
         textAlign: "center",
         paddingVertical: 15,
+        marginVertical: 20,
         marginBottom: 20,
         justifyContent: 'center',
         shadowColor: Colors.Shadow,
@@ -94,10 +95,11 @@ export const buttonStyles= StyleSheet.create ({
     },
     toggleButton: {
         position: 'absolute',
-        right: 10,
-        top: '30%',
+        right: 15,
+        top: 13,
         paddingHorizontal: 10,
-        paddingVertical: 5,
+        paddingVertical: 10,
+        zIndex: 1,
     },
     quizzOption:{
         alignItems: 'center',

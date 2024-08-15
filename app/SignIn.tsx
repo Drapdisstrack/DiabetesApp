@@ -30,12 +30,14 @@ const SignIn: React.FC = () => {
       <Image source={require('@/assets/images/iniciosesion.png')} style={containerStyles.image} />
       <Text style={fontStyle.headlineFont}>Iniciar sesión</Text>
       <Form showNameInput={false} isSignUp={false} onSubmit={handleLogin} onError={setError} />
+      <View style={containerStyles.questionContainer1}>
       <Text style={fontStyle.haveAccountText}>
-        No tienes una cuenta?{' '}
+        No tienes una cuenta?{' '} </Text>
         <TouchableOpacity onPress={() => router.navigate("SignUp")}>
           <Text style={fontStyle.haveAccount2Text}>Regístrate</Text>
         </TouchableOpacity>
-      </Text>
+      </View>
+
       <TouchableOpacity onPress={() => router.navigate("ResetPasswordPage")}>
         <Text style={fontStyle.haveAccount2Text}>¿Olvidaste tu contraseña?</Text>
       </TouchableOpacity>

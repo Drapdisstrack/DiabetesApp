@@ -25,10 +25,21 @@ export const containerStyles= StyleSheet.create ({
         alignItems: 'center',
         backgroundColor: Colors.Background
     },
+    questionContainer1: {
+        flexDirection: 'row',  // Coloca los elementos en una fila
+        justifyContent: 'center',  // Centra horizontalmente el contenido
+        alignItems: 'center',  // Alinea verticalmente el texto y el botón
+        marginTop: 15,  // Espacio superior para separar del contenido anterior
+    },
     image: {
         width: 175,
         height: 175,
-        marginBottom: 15,
+        marginTop: 50,
+    },
+    imageRegister: {
+        width: 130,
+        height: 130,
+        marginTop: 50,
     },
     levelCompletedImage: {
         width: 412,
@@ -42,7 +53,6 @@ export const containerStyles= StyleSheet.create ({
     passwordContainer: {
         width: '85%',
         position: 'relative',
-        marginBottom: 20
     },
     questionContainer: {
         backgroundColor: Colors.Brand01,

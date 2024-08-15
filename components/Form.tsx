@@ -99,7 +99,7 @@ class Form extends Component<FormProps, FormState> {
         />
         <View style={containerStyles.passwordContainer}>
           <TextInput
-            style={[fontStyle.textInput, { paddingRight: 40 }]}
+            style={[fontStyle.textInput, { width: '100%' }]}
             placeholder="Ingresa tu contraseña"
             secureTextEntry={!this.state.showPassword}
             onChangeText={this.handlePasswordChange}
@@ -115,7 +115,7 @@ class Form extends Component<FormProps, FormState> {
         {isSignUp && (
           <View style={containerStyles.passwordContainer}>
             <TextInput
-              style={fontStyle.textInput}
+              style={[fontStyle.textInput, { width: '100%' }]}
               placeholder="Confirma tu contraseña"
               secureTextEntry={!this.state.showPassword}
               onChangeText={this.handleConfirmPasswordChange}
