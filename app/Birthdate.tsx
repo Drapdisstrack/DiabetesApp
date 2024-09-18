@@ -1,51 +1,57 @@
-// src/components/BirthdateScreen.tsx
 import React, { useState } from "react";
-import { useRouter } from "expo-router";
-import { View, StyleSheet, Image, Text } from "react-native";
+import { View, Image, Text, StyleSheet } from "react-native";
 import DatePicker from "../components/DatePicker";
 import NextButton from "../components/NextButton";
-import { containerStyles } from "@/constants/Containers";
-import { fontStyle } from "@/constants/FontStyles";
-import { buttonStyles } from "@/constants/Buttons";
+import { useRouter } from "expo-router";
 import { auth, db } from "./auth/firebase";
 import { doc, updateDoc } from "firebase/firestore";
 
 const BirthdateScreen: React.FC = () => {
-  const router = useRouter(); 
-  const [day, setDay] = useState("");
-  const [month, setMonth] = useState("");
-  const [year, setYear] = useState("");
+  const router = useRouter();
+  const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
 
-  const handleInputChange = (field: string, value: string) => {
-    if (field === "day") {
-      setDay(value);
-    } else if (field === "month") {
-      setMonth(value);
-    } else if (field === "year") {
-      setYear(value);
-    }
+  const handleDateChange = (date: Date) => {
+    setSelectedDate(date);
   };
 
   const handleSubmit = async () => {
     const user = auth.currentUser;
-    if (user) {
+    if (user && selectedDate) {
       const userDoc = doc(db, "users", user.uid);
+      const day = selectedDate.getDate().toString().padStart(2, "0");
+      const month = (selectedDate.getMonth() + 1).toString().padStart(2, "0");
+      const year = selectedDate.getFullYear().toString();
       await updateDoc(userDoc, {
-        birthdate: `${year}-${month}-${day}`
+        birthdate: `${year}-${month}-${day}`,
       });
       router.navigate("Home");
     }
   };
 
   return (
-    <View style={containerStyles.container}>
-      <Image source={require("../assets/images/date.png")} style={containerStyles.image} />
-      <Text style={fontStyle.headlineFontData}>Seleccione su fecha de nacimiento</Text>
-      <DatePicker day={day} month={month} year={year} onChange={handleInputChange} />
+    <View style={styles.container}>
+      <Image source={require("../assets/images/date.png")} style={styles.image} />
+      <Text style={styles.headline}>Seleccione su fecha de nacimiento</Text>
+      <DatePicker selectedDate={selectedDate} onDateChange={handleDateChange} />
       <NextButton onSubmit={handleSubmit} />
     </View>
   );
 };
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  image: {
+    width: 100,
+    height: 100,
+  },
+  headline: {
+    fontSize: 20,
+    marginBottom: 20,
+  },
+});
 
 export default BirthdateScreen;
