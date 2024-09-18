@@ -25,7 +25,11 @@ const SignUp: React.FC = () => {
         router.navigate("GetData");
       })
       .catch((error) => {
-        setError("Hubo un error, inténtelo nuevamente");
+        if (error.code === 'auth/email-already-in-use') {
+          setError("El correo electrónico ya está registrado.");
+        } else {
+          setError("Hubo un error, inténtelo nuevamente.");
+        }      
       });
   };
 
