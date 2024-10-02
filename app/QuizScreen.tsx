@@ -24,7 +24,7 @@ export default function QuizScreen() {
     handleNextQuestion,
     handleTimeout,
     handleRestartQuiz,
-    questions // Asegúrate de incluir questions en el retorno de useQuiz
+    questions
   } = useQuiz();
 
   if (questions.length === 0) {

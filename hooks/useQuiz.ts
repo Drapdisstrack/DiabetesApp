@@ -1,7 +1,5 @@
-// useQuiz.ts
 import { useEffect, useState } from 'react';
-import { fetchQuestions } from './firebaseService'; // Ajusta la ruta según tu estructura
-
+import { fetchQuestions, getCurrentUser, updateUserExperience } from './firebaseService'; 
 interface Question {
   pregunta: string;
   opciones: string[];
@@ -20,7 +18,6 @@ function useQuiz() {
   const [timerKey, setTimerKey] = useState(0);
 
   useEffect(() => {
-    // Obtener preguntas desde Firebase
     fetchQuestions().then((questions) => {
       setQuestions(questions);
       setDisabledOptions(Array(questions[0]?.opciones.length || 0).fill(false));
@@ -36,10 +33,13 @@ function useQuiz() {
     if (index === current.respuesta) {
       setScore(score + 1);
       setShowSuccess(true);
+
+      updateUserExperienceAfterAnswer();
+
       setTimeout(() => {
         setShowSuccess(false);
         handleNextQuestion();
-      }, 1000); // Tiempo para mostrar el popup antes de pasar a la siguiente pregunta
+      }, 1000);
     } else {
       const updatedDisabledOptions = [...disabledOptions];
       updatedDisabledOptions[index] = true;
@@ -55,28 +55,45 @@ function useQuiz() {
 
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
-      setTimerKey(prevKey => prevKey + 1); // Reinicia el temporizador para la nueva pregunta
+      setTimerKey(prevKey => prevKey + 1); 
     } else {
-      // Manejar la finalización del cuestionario
+      updateUserExperienceAfterQuiz();
+
       setCurrentQuestion(0);
       setScore(0);
-      setTimerKey(prevKey => prevKey + 1); // Reinicia el temporizador al final del cuestionario
+      setTimerKey(prevKey => prevKey + 1); 
     }
   };
+
 
   const handleTimeout = () => {
     setShowTimeout(true);
   };
 
+
   const handleRestartQuiz = () => {
     setShowTimeout(false);
     setSelectedOption(null);
     setDisabledOptions(Array(questions[0]?.opciones.length || 0).fill(false));
-    setTimerKey(prevKey => prevKey + 1); // Cambia la clave del Timer para forzar su reinicio
+    setTimerKey(prevKey => prevKey + 1); 
+  };
+
+  const updateUserExperienceAfterAnswer = async () => {
+    const currentUser = getCurrentUser();
+    if (currentUser) {
+      await updateUserExperience(currentUser.uid, 10); 
+    }
+  };
+
+  const updateUserExperienceAfterQuiz = async () => {
+    const currentUser = getCurrentUser();
+    if (currentUser) {
+      await updateUserExperience(currentUser.uid, 50); 
+    }
   };
 
   return {
-    questions, // Añadir esta línea
+    questions, 
     currentQuestion,
     selectedOption,
     disabledOptions,

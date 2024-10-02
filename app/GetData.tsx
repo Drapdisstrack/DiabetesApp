@@ -13,12 +13,18 @@ const GetData: React.FC = () => {
 
   const handleGetData = async (name: string, surname: string, state: string) => {
     const user = auth.currentUser;
+    const level = 1;
+    const exp = 0;
+
     if (user) {
       const userDoc = doc(db, "users", user.uid);
       await updateDoc(userDoc, {
         name,
         surname,
-        state
+        state,
+        level,
+        exp
+
       });
       router.navigate("Gender");
     }

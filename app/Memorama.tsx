@@ -2,7 +2,7 @@ import * as React from "react";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 import { IconButton, ProgressBar } from "react-native-paper";
-
+import { getCurrentUser, updateUserExperience } from '../hooks/firebaseService'; // Ajusta la ruta según tu estructura
 import Card from "../components/Card";
 
 const cards = ["🍛", "💊", "🥕", "🏥"];
@@ -16,7 +16,7 @@ const generateRandomBoard = (cards: string[]): string[] => {
   return board;
 };
 
-const shuffle = (array: any[]): any[] => {
+const shuffle = (array: string[]): string[] => {
   for (let i = array.length - 1; i > 0; i--) {
     const randomIndex = Math.floor(Math.random() * (i + 1));
     [array[i], array[randomIndex]] = [array[randomIndex], array[i]];
@@ -29,6 +29,7 @@ const Memorama: React.FC = () => {
   const [selectedCards, setSelectedCards] = React.useState<number[]>([]);
   const [matchedCards, setMatchedCards] = React.useState<number[]>([]);
   const [score, setScore] = React.useState(0);
+  const [hasPlayerWon, setHasPlayerWon] = React.useState(false);
 
   React.useEffect(() => {
     if (selectedCards.length < 2) return;
@@ -43,12 +44,31 @@ const Memorama: React.FC = () => {
     }
   }, [selectedCards]);
 
+  React.useEffect(() => {
+    const checkWin = async () => {
+      if (matchedCards.length === board.length) {
+        const playerWon = await didPlayerWin();
+        setHasPlayerWon(playerWon);
+      }
+    };
+    checkWin();
+  }, [matchedCards, board.length]);
+
   const handleTapCard = (index: number) => {
     if (selectedCards.length >= 2 || selectedCards.includes(index)) return;
     setSelectedCards([...selectedCards, index]);
   };
 
-  const didPlayerWin = () => matchedCards.length === board.length;
+  const didPlayerWin = async (): Promise<boolean> => {
+    if (matchedCards.length === board.length) {
+      const currentUser = getCurrentUser();
+      if (currentUser) {
+        await updateUserExperience(currentUser.uid, 50); // Aumenta 50 puntos de experiencia
+      }
+      return true;
+    }
+    return false;
+  };
 
   const progress = score > 0 ? Math.min(1, (score + 0.5) / 4) : 0;
 
@@ -67,7 +87,7 @@ const Memorama: React.FC = () => {
       <View style={styles.boardContainer}>
         <View style={styles.titleContainer}>
           <Text style={styles.title}>
-            {didPlayerWin() ? "Felicidades 🎉" : "Memorama"}
+            {hasPlayerWon ? "Felicidades 🎉" : "Memorama"}
           </Text>
         </View>
 

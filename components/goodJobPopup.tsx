@@ -1,7 +1,7 @@
 import { containerStyles } from '@/constants/Containers';
 import { fontStyle } from '@/constants/FontStyles';
 import React from 'react';
-import { View, Image} from 'react-native';
+import { View, Image, Text } from 'react-native';
 import { Button, Modal, Title} from 'react-native-paper';
 
 interface Props {
@@ -21,6 +21,7 @@ export default function SuccessPopup({ visible, onClose }: Props) {
       <View style={containerStyles.whiteBottomContainer}>
         <Title style={fontStyle.headlineFont}>¡Buen Trabajo!</Title>
         <Image source={require('@/assets/images/estrellas.png')} style={containerStyles.starImage} />  
+        <Text style={fontStyle.textFieldFont}>+10 de experiencia</Text>
       </View>     
     </Modal>
   );
