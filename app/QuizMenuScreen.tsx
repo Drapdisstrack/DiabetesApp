@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 const QuizMenuScreen: React.FC = () => {
   const handleNewGamePress = () => {
-    router.navigate("QuizScreen");
+    router.replace("QuizScreen");
   };
 
   return (
