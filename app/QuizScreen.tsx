@@ -20,10 +20,14 @@ export default function QuizScreen() {
     showSuccess,
     showTimeout,
     timerKey,
+    experienceWon,
+    level,
+    experience,
     handleOptionSelect,
     handleNextQuestion,
     handleTimeout,
     handleRestartQuiz,
+    handelGameEnd,
     questions
   } = useQuiz();
 
@@ -69,7 +73,7 @@ export default function QuizScreen() {
         </View>
       </View>
       <SuccessPopup visible={showSuccess} onClose={handleNextQuestion} />
-      <TimeoutPopup visible={showTimeout} onClose={handleRestartQuiz} />
+      <TimeoutPopup visible={showTimeout} experienceWon={experienceWon} level={level} experience={experience} onRestart={handleRestartQuiz} onEnd={handelGameEnd} />
     </SafeAreaView>
   );
 }

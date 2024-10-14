@@ -1,5 +1,9 @@
 import { useEffect, useState } from 'react';
 import { fetchQuestions, getCurrentUser, updateUserExperience } from './firebaseService'; 
+import { auth, db } from '@/app/auth/firebase';
+import { doc, getDoc } from 'firebase/firestore';
+import { router } from 'expo-router';
+
 interface Question {
   pregunta: string;
   opciones: string[];
@@ -16,6 +20,9 @@ function useQuiz() {
   const [showSuccess, setShowSuccess] = useState(false);
   const [showTimeout, setShowTimeout] = useState(false);
   const [timerKey, setTimerKey] = useState(0);
+  const [experienceWon, setExperienceWon] = useState(0);
+  const [level, setLevel] = useState(0);
+  const [experience, setExperience] = useState(0);
 
   useEffect(() => {
     fetchQuestions().then((questions) => {
@@ -23,6 +30,18 @@ function useQuiz() {
       setDisabledOptions(Array(questions[0]?.opciones.length || 0).fill(false));
     });
   }, []);
+
+  const fetchUserData = async () => {
+    const user = auth.currentUser;
+    if (user) {
+      const userDocRef = doc(db, "users", user.uid);
+      const userDocSnap = await getDoc(userDocRef);
+      if (userDocSnap.exists()) {
+        setExperience(userDocSnap.data().exp);
+        setLevel(userDocSnap.data().level);
+      }
+    }
+  };
 
   const handleOptionSelect = (index: number) => {
     if (questions.length === 0) return;
@@ -68,6 +87,7 @@ function useQuiz() {
 
   const handleTimeout = () => {
     setShowTimeout(true);
+    fetchUserData();
   };
 
 
@@ -80,17 +100,27 @@ function useQuiz() {
 
   const updateUserExperienceAfterAnswer = async () => {
     const currentUser = getCurrentUser();
+    const points = 10;
     if (currentUser) {
-      await updateUserExperience(currentUser.uid, 10); 
+      await updateUserExperience(currentUser.uid, points);
     }
+    setExperienceWon(experience + points);
   };
 
   const updateUserExperienceAfterQuiz = async () => {
+    if (score == 0) return;
+    
     const currentUser = getCurrentUser();
+    const points = 50;
     if (currentUser) {
-      await updateUserExperience(currentUser.uid, 50); 
+      await updateUserExperience(currentUser.uid, points); 
     }
+    setExperienceWon(experience + points);
   };
+
+  const handelGameEnd = () => {
+    router.back();
+  }
 
   return {
     questions, 
@@ -101,10 +131,14 @@ function useQuiz() {
     showSuccess,
     showTimeout,
     timerKey,
+    experienceWon,
+    level,
+    experience,
     handleOptionSelect,
     handleNextQuestion,
     handleTimeout,
     handleRestartQuiz,
+    handelGameEnd
   };
 }
 
