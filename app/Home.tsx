@@ -45,6 +45,7 @@ const HomeScreen: React.FC = () => {
       <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF" />
       <View style={styles.textContainer}>
         <Text style={[styles.headerText, styles.margin]}>Buenos Dias,</Text>
+        <Text style={styles.levelPill}>Nivel {userData?.level}</Text>
         <TouchableWithoutFeedback onPress={handleAvatarPress}>
           <View style={styles.avatarContainer}>
             <Avatar.Image
@@ -85,6 +86,19 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "left",
     marginBottom: 10,
+    flexGrow: 1
+  },
+  levelPill: {
+    color: "white",
+    fontSize: 18,
+    fontWeight: "bold",
+    textAlign: "right",
+    marginBottom: 10,
+    marginHorizontal: 10,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderRadius: 25,
+    backgroundColor: "#ff5722"
   },
   nameText: {
     fontSize: 48,
