@@ -1,15 +1,16 @@
-import React from 'react';
-import { SafeAreaView, View } from 'react-native';
-import { Text } from 'react-native-paper';
-import QuizOption from '@/components/QuizOption';
-import TimeoutPopup from '@/components/TimeoutPopup';
-import Timer from '@/components/Timer';
-import useQuiz from '@/hooks/useQuiz';
-import { TIMER_DURATION } from '@/constants/TimeQuiz';
-import { containerStyles } from '@/constants/Containers';
-import { fontStyle } from '@/constants/FontStyles';
-import ProgressBar from '@/components/progressBar';
-import SuccessPopup from '@/components/goodJobPopup';
+import React from "react";
+import { SafeAreaView, View, StyleSheet } from "react-native";
+import { Text } from "react-native-paper";
+import QuizOption from "@/components/QuizOption";
+import TimeoutPopup from "@/components/TimeoutPopup";
+import Timer from "@/components/Timer";
+import useQuiz from "@/hooks/useQuiz";
+import { TIMER_DURATION } from "@/constants/TimeQuiz";
+import { containerStyles } from "@/constants/Containers";
+import { fontStyle } from "@/constants/FontStyles";
+import ProgressBar from "@/components/progressBar";
+import SuccessPopup from "@/components/goodJobPopup";
+import LottieView from "lottie-react-native";
 
 export default function QuizScreen() {
   const {
@@ -28,7 +29,7 @@ export default function QuizScreen() {
     handleTimeout,
     handleRestartQuiz,
     handelGameEnd,
-    questions
+    questions,
   } = useQuiz();
 
   if (questions.length === 0) {
@@ -44,16 +45,24 @@ export default function QuizScreen() {
   return (
     <SafeAreaView style={containerStyles.container}>
       <View style={containerStyles.container}>
-        <Text style={fontStyle.headlineFont}>
-          Pregunta {currentQuestion + 1}/{questions.length}
-        </Text>
+        <LottieView
+          source={require("@/assets/animations/quiz.json")}
+          autoPlay
+          loop={true}
+          style={{ width: 200, height: 200 }}
+        />
         <View>
-          <Timer
-            key={`${currentQuestion}-${timerKey}`}
-            duration={TIMER_DURATION}
-            onFinish={handleTimeout}
-          />
-          <ProgressBar current={currentQuestion + 1} total={questions.length} />
+          <View style={styles.container}>
+            <Timer
+              key={`${currentQuestion}-${timerKey}`}
+              duration={TIMER_DURATION}
+              onFinish={handleTimeout}
+            />
+            <ProgressBar
+              current={currentQuestion + 1}
+              total={questions.length}
+            />
+          </View>
         </View>
         <View style={containerStyles.questionContainer}>
           <Text style={fontStyle.primaryButtonFont}>{pregunta}</Text>
@@ -73,7 +82,22 @@ export default function QuizScreen() {
         </View>
       </View>
       <SuccessPopup visible={showSuccess} onClose={handleNextQuestion} />
-      <TimeoutPopup visible={showTimeout} experienceWon={experienceWon} level={level} experience={experience} onRestart={handleRestartQuiz} onEnd={handelGameEnd} />
+      <TimeoutPopup
+        visible={showTimeout}
+        experienceWon={experienceWon}
+        level={level}
+        experience={experience}
+        onRestart={handleRestartQuiz}
+        onEnd={handelGameEnd}
+      />
     </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 16,
+  },
+});
