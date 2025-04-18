@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, StyleSheet, TouchableOpacity, Alert } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, Alert, Platform } from "react-native";
 import { Avatar, ProgressBar, TextInput } from "react-native-paper";
 import { useRouter } from "expo-router";
 import { containerStyles } from "@/constants/Containers";
@@ -53,6 +53,13 @@ const Profile: React.FC = () => {
         setSurname(data.surname || "");
         setState(data.state || "");
         setBirthdate(data.birthdate || "");
+
+        // Convertir birthdate en string a Date (si existe)
+        if (data.birthdate) {
+          const parts = data.birthdate.split("-");
+          const localDate = new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
+          setSelectedDate(localDate);
+        }        
       }
     }
   };
@@ -133,54 +140,79 @@ const Profile: React.FC = () => {
         />
         <Text style={styles.label}>Fecha de nacimiento</Text>
 
-        {/* Campo de texto no editable manualmente, pero abre el DatePicker */}
-        <TouchableOpacity 
-          activeOpacity={editable ? 0 : 1}
+        <TouchableOpacity
+          activeOpacity={editable ? 0.7 : 1}
           disabled={!editable}
-          onPress={() => editable && setShowDatePicker(true)}
+          onPress={() => {            
+            setShowDatePicker(true);
+          }}
         >
           <TextInput
             style={[!editable && styles.disabled, styles.input]}
             value={birthdate}
-            editable={false} // No editable manualmente
-            pointerEvents="none" // Evita abrir el teclado
-            underlineColor= 'transparent'
+            editable={false}
+            pointerEvents="none"
+            underlineColor="transparent"
           />
         </TouchableOpacity>
 
-        {/* DatePicker aparece cuando el usuario toca el TextInput */}
-        {showDatePicker && (
-          <>
-           <View style={containerStyles.simpleContainer}>
-              <DateTimePicker
-                value={selectedDate || new Date()}
-                mode="date"
-                display="spinner"
-                onChange={(event, date) => {
-                  if (date) {
-                    setSelectedDate(date); // Almacena la fecha seleccionada
-                  }
-                }}
-                maximumDate={new Date()} 
-              />
+        {/* DateTimePicker para ambas plataformas */}
+        {showDatePicker && Platform.OS === 'android' && (
+          <DateTimePicker
+            value={selectedDate || new Date()}
+            mode="date"
+            display="default"
+            onChange={(event, date) => {
+              setShowDatePicker(false); // Cierra el modal automáticamente
+              if (date) {
+                setSelectedDate(date);
+                setBirthdate(date.toISOString().split("T")[0]);
+              }
+            }}
+            maximumDate={new Date()}
+          />
+        )}
 
-              {/* Botón para guardar la fecha seleccionada */}
+        {showDatePicker && Platform.OS === 'ios' && (
+          <View style={{ marginTop: 10 }}>
+            <DateTimePicker
+              value={selectedDate || new Date()}
+              mode="date"
+              display="spinner"
+              onChange={(_event, date) => {
+                if (date) {
+                  setSelectedDate(date);
+                }
+              }}
+              maximumDate={new Date()}
+              style={{ backgroundColor: 'white' }}
+            />
+            {/* Botones para Guardar y Cancelar fecha */}
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 10 }}>
               <TouchableOpacity
-                style={[
-                  buttonStyles.success,
-                ]}
+                style={[buttonStyles.success, { flex: 1, marginRight: 5 }]}
                 onPress={() => {
-                  if (editable && selectedDate) {
-                    setBirthdate(selectedDate.toISOString().split("T")[0]); // Formato YYYY-MM-DD
-                    setShowDatePicker(false); // Ocultar el DatePicker después de guardar
+                  if (selectedDate) {
+                    setBirthdate(selectedDate.toISOString().split("T")[0]);
                   }
+                  setShowDatePicker(false);
                 }}
               >
                 <Text style={fontStyle.primaryButtonFont}>Guardar Fecha</Text>
               </TouchableOpacity>
+
+              <TouchableOpacity
+                style={[buttonStyles.error, { flex: 1, marginLeft: 5 }]}
+                onPress={() => {
+                  setShowDatePicker(false);
+                }}
+              >
+                <Text style={fontStyle.primaryButtonFont}>Cancelar Fecha</Text>
+              </TouchableOpacity>
             </View>
-          </>
+          </View>
         )}
+
       </View>
 
       {!editable ? (
@@ -218,6 +250,7 @@ const styles = StyleSheet.create({
     
   },
   label: {
+    color: Colors.Monochromatic01,
     fontSize: 14,
     marginBottom: 2,
     marginTop: 10

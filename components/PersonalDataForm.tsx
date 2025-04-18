@@ -4,6 +4,7 @@ import {
   TextInput,
   StyleSheet,
   KeyboardAvoidingView,
+  ScrollView,
   Platform,
   TouchableOpacity,
   Text,
@@ -27,6 +28,10 @@ const PersonalDataForm: React.FC<PersonalDataFormProps> = ({ onSubmit }) => {
   };
 
   return (
+    <ScrollView 
+      contentContainerStyle={style.scrollContent}
+      keyboardShouldPersistTaps="handled"
+    >
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       style={style.formContainer}
@@ -55,12 +60,19 @@ const PersonalDataForm: React.FC<PersonalDataFormProps> = ({ onSubmit }) => {
         <Text style={fontStyle.primaryButtonFont}>Siguiente</Text>
       </TouchableOpacity>
     </KeyboardAvoidingView>
+    </ScrollView>
   );
 };
 
 const style = StyleSheet.create({
+  scrollContent: {
+    flexGrow: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    paddingVertical: 0, // Espacio extra por si se necesita
+  },
     formContainer: {
-      width: "85%",
+      width: "90%",
       alignItems: 'center'
     }
   }
