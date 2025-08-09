@@ -35,7 +35,7 @@ const CarouselSection: React.FC<Props> = ({ navigationCallbacks }) => {
       image: require("../assets/images/abuelos.png"),
     },
     {
-      title: "Consulta tu Calendario", // Nuevo elemento para el calendario
+      title: "365 días contigo", // Nuevo elemento para el calendario
       backgroundColor: "#FF6F61",
       image: require("../assets/images/calendario2.png"), // Asegúrate de tener esta imagen
     },

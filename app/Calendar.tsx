@@ -20,75 +20,91 @@ const today = new Intl.DateTimeFormat("es-MX", {
   day: "2-digit"
 }).format(new Date()).split("/").reverse().join("-");
 
-
 const availableEvents = [
-  "Practicar la autoaceptación",
-  "Llevar un diario emocional",
-  "Establecer límites saludables",
-  "Practicar la meditación o el mindfulness",
-  "Hablar con un amigo o terapeuta",
-  "Participar en actividades creativas",
-  "Practicar la gratitud",
-  "Gestionar el estrés",
-  "Hacer actividades que te gusten",
-  "Desconectar de las redes sociales",
-  "Leer libros o artículos",
-  "Aprender algo nuevo",
-  "Resolver rompecabezas o sudokus",
-  "Practicar la reflexión crítica",
-  "Limitar el consumo de noticias",
-  "Practicar la meditación",
-  "Escribir ensayos o reflexiones",
-  "Participar en debates o discusiones",
-  "Organizar tareas y prioridades",
-  "Desarrollar un proyecto personal",
-  "Mantener contacto regular con amigos y familia",
-  "Participar en actividades grupales",
-  "Hacer nuevos amigos",
-  "Apoyar a otros",
-  "Practicar la escucha activa",
-  "Celebrar logros de los demás",
-  "Agradecer las relaciones importantes",
-  "Crear redes de apoyo",
-  "Limitar las relaciones tóxicas",
-  "Ser asertivo en las relaciones",
-  "Practicar la meditación o la oración",
-  "Reflexionar sobre tus valores",
-  "Pasar tiempo en la naturaleza",
-  "Practicar la gratitud",
-  "Leer textos espirituales",
-  "Asistir a servicios religiosos o espirituales",
-  "Practicar la compasión",
-  "Desarrollar un ritual personal",
-  "Reflexionar sobre el propósito de vida",
-  "Participar en actividades de voluntariado",
-  "Caminar 30 minutos",
-  "Practicar yoga",
-  "Beber suficiente agua",
-  "Dormir 7-9 horas",
-  "Revisar los pies",
-  "Hacer estiramientos",
-  "Limitar el consumo de azúcar",
-  "Escribir en un diario",
-  "Unirse a un grupo de apoyo",
-  "Meditar o hacer respiración profunda",
-  "Realizar una actividad recreativa",
-  "Hablar con alguien de confianza",
-  "Practicar la gratitud",
-  "Leer sobre diabetes",
-  "Aprender una receta saludable",
-  "Llevar un diario de comidas",
-  "Monitorear la glucosa",
-  "Contactar a un amigo o familiar",
-  "Unirse a un grupo de ejercicio",
-  "Hacer voluntariado",
-  "Meditar",
-  "Pasar tiempo en la naturaleza",
-  "Reflexionar sobre el día"
+  { 
+    title: "Camina 20 minutos al aire libre",
+    description: "Realiza una caminata suave para mejorar la circulación y controlar la glucosa."
+  },
+  { 
+    title: "Realiza 10 minutos de estiramientos",
+    description: "Estira tus músculos para mejorar la flexibilidad y reducir tensiones."
+  },
+  { 
+    title: "Cocina una comida saludable con bajo índice glucémico",
+    description: "Prepara alimentos frescos que ayuden a controlar tus niveles de azúcar en sangre."
+  },
+  { 
+    title: "Realiza una actividad física que disfrutes",
+    description: "Haz una actividad física divertida, como bailar o nadar, para mantenerte activo."
+  },
+  { 
+    title: "Escribe 3 cosas por las que estés agradecido/a",
+    description: "Anota lo positivo del día para fomentar una mentalidad positiva."
+  },
+  { 
+    title: "Haz una llamada o videollamada a un" + "\nser querido",
+    description: "Conéctate con alguien cercano para sentirte acompañado y reducir el estrés."
+  },
+  { 
+    title: "Practica 5 minutos de respiración" + "\nprofunda",
+    description: "Relájate con respiraciones profundas para reducir la ansiedad y mejorar el bienestar."
+  },
+  { 
+    title: "Escucha música relajante durante 15 minutos",
+    description: "Disfruta de melodías tranquilas para reducir el estrés y mejorar tu estado de ánimo."
+  },
+  { 
+    title: "Lee 10 minutos sobre un tema que te interese",
+    description: "Dedica unos minutos a la lectura para mantener tu mente activa y aprendiendo."
+  },
+  { 
+    title: "Realiza un rompecabezas o un juego de memoria",
+    description: "Ejercita tu mente con actividades que estimulen tu memoria y concentración."
+  },
+  { 
+    title: "Dedica 10 minutos a aprender algo " + "\nnuevo en línea",
+    description: "Explora un tema nuevo para seguir aprendiendo y mantener tu cerebro ágil."
+  },
+  { 
+    title: "Escribe 5 cosas que aprendiste durante " + "\nla semana",
+    description: "Reflexiona y anota lo aprendido para reforzar tus conocimientos."
+  },
+  { 
+    title: "Invita a un amigo o familiar a caminar o tomar un café",
+    description: "Disfruta de la compañía de tus seres queridos mientras realizas una actividad saludable."
+  },
+  { 
+    title: "Participa en una actividad comunitaria o grupo de apoyo",
+    description: "Conéctate con otros para compartir experiencias y mantener la motivación."
+  },
+  { 
+    title: "Organiza una tarde de juegos de mesa " + "\ncon familiares o amigos",
+    description: "Comparte un momento divertido para fortalecer tus lazos sociales."
+  },
+  { 
+    title: "Llama a un amigo para ponerte al día",
+    description: "Mantén el contacto regular con amigos para evitar el aislamiento y fomentar la amistad."
+  },
+  { 
+    title: "Medita durante 5 minutos en la mañana",
+    description: "Inicia el día con tranquilidad, enfocándote en tu bienestar y paz interior."
+  },
+  { 
+    title: "Dedica 10 minutos para disfrutar del aire libre",
+    description: "Sal a caminar o simplemente a respirar aire fresco para conectar con la naturaleza."
+  },
+  { 
+    title: "Reflexiona sobre una experiencia " + "\npositiva del día",
+    description: "Tómate un momento para recordar lo bueno y fomentar un estado de ánimo positivo."
+  },
+  { 
+    title: "Realiza una actividad que te conecte " + "\ncon la naturaleza",
+    description: "Camina por el parque o la playa para relajarte y revitalizar tu energía."
+  },
 ];
 
 
-const formatDate = (dateString) => {
+const formatDate = (dateString : string): string => {
   const date = new Date(dateString + "T00:00:00");
   return new Intl.DateTimeFormat("es-ES", {
     day: "numeric",
@@ -104,12 +120,19 @@ export function BasicCalendar() {
   const [currentPage, setCurrentPage] = useState(0);
   const eventsPerPage = 5;
   const totalPages = Math.ceil(availableEvents.length / eventsPerPage);
+  type Event = {
+    title: string;
+    description: string;
+  };
+  const [selectedInfoEvent, setSelectedInfoEvent] = useState<Event | null>(null);
 
-  const handleDatePress = (day) => {
+
+  const handleDatePress = (day : any) => {
     setSelectedDate(day.dateString);
   };  
+  
 
-  const handleAddEvent = (event) => {
+  const handleAddEvent = (event : any) => {
     if (eventsByDate[selectedDate]?.includes(event)) {
       alert("Este evento ya está agregado en esta fecha.");
       return;
@@ -122,7 +145,7 @@ export function BasicCalendar() {
     setIsModalVisible(false);
   };
 
-  const handleDeleteEvent = (event) => {
+  const handleDeleteEvent = (event : any) => {
     const updatedEvents = {
       ...eventsByDate,
       [selectedDate]: eventsByDate[selectedDate].filter(e => e !== event)
@@ -130,36 +153,90 @@ export function BasicCalendar() {
     saveEvents(updatedEvents);
   };
 
+  const getCustomMarkedDates = () => {
+    const marked: Record<string, any> = {};
+
+    Object.keys(eventsByDate).forEach((date) => {
+      const eventCount = eventsByDate[date]?.length || 0;
+
+      let backgroundColor = "#ffffff"; // default
+
+      if (eventCount === 1) {
+        backgroundColor = "#66D2A5"; // verde
+      } else if (eventCount === 2) {
+        backgroundColor = "#FFD700"; // amarillo
+      } else if (eventCount >= 3) {
+        backgroundColor = "#FF6B6B"; // rojo
+      }
+
+      marked[date] = {
+        customStyles: {
+          container: {
+            backgroundColor,
+            borderRadius: 10,
+            borderWidth: 0,
+            borderColor: "#000",
+          },
+          text: {
+            color: "#000",
+            fontWeight: "bold",
+          },
+        },
+      };
+    });
+
+    // Asegurar que el día seleccionado también se resalte
+    if (!marked[selectedDate]) {
+      marked[selectedDate] = {
+        customStyles: {
+          container: {
+            backgroundColor: "#fff",
+            borderColor: "#000",
+            borderRadius: 10,
+            borderWidth: 2,
+          },
+          text: {
+            color: "#000",
+            fontWeight: "bold",
+          },
+        },
+      };
+    }
+
+    if (marked[today]) {
+      marked[today].customStyles.container.borderWidth = 2;
+      marked[today].customStyles.container.borderColor = "#00adf5";
+    } else {
+      marked[today] = {
+        customStyles: {
+          container: {
+            borderColor: "#00adf5",
+            borderWidth: 2,
+            borderRadius: 10,
+          },
+          text: {
+            color: "#00adf5",
+            fontWeight: "bold",
+          },
+        },
+      };
+    }
+
+    return marked;
+  };
+
   return (
     <View style={styles.container}>
-      <TouchableOpacity 
-        style={styles.fabButton} 
-        onPress={() => setIsModalVisible(true)}
-      >
-    <Text style={styles.fabButtonText}>+</Text>
-    </TouchableOpacity>
 
       <Calendar
         onDayPress={handleDatePress}
-        markedDates={
-          Object.keys(eventsByDate).reduce((acc, date) => {
-            if (date !== today && eventsByDate[date]?.length > 0) {
-              acc[date] = { 
-                selected: true, 
-                selectedColor: "#99d17d90",
-                customStyles: { text: { color: "black" } } // Mantiene el texto en negro
-              };
-            }
-            return acc;
-          }, {})
-        }
-        
+        markingType="custom"
+        markedDates={getCustomMarkedDates()}
         theme={{
-          todayTextColor: "#00adf5",
+          todayTextColor: "#000",
           textSectionTitleColor: "#222222", // Color oscuro para los nombres de los días
           textSectionTitleDisabledColor: "#666666", // Color menos oscuro para sábado y domingo
         }}
-        
       />
 
       <View style={styles.todayEventsContainer}>
@@ -190,36 +267,67 @@ export function BasicCalendar() {
 
       <Modal isVisible={isModalVisible}>
         <View style={styles.modalContent}>
-          <Text style={styles.modalTitle}>Agregar actividad</Text>
-          <FlatList
-            data={availableEvents.slice(currentPage * eventsPerPage, (currentPage + 1) * eventsPerPage)}
-            keyExtractor={(item) => item}
-            renderItem={({ item }) => (
-              <TouchableOpacity onPress={() => handleAddEvent(item)}>
-                <Text style={styles.modalItem}>{item}</Text>
+          {!selectedInfoEvent ? (
+            <>
+              <Text style={styles.modalTitle}>Agregar actividad</Text>
+              <FlatList
+                data={availableEvents.slice(currentPage * eventsPerPage, (currentPage + 1) * eventsPerPage)}
+                keyExtractor={(item) => item.title}
+                renderItem={({ item }) => (
+                  <View style={styles.buttonRow}>
+                    <TouchableOpacity onPress={() => handleAddEvent(item.title)}>
+                      <Text style={styles.modalItem}>{item.title}</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => setSelectedInfoEvent(item)} style={styles.infoButton}>
+                      <Text style={styles.infoButtonText}>i</Text>
+                    </TouchableOpacity>
+                  </View>
+                )}
+              />
+              <View style={styles.paginationContainer}>
+                <TouchableOpacity onPress={() => setCurrentPage(Math.max(currentPage - 1, 0))}>
+                  <Text style={styles.paginationButton}>Anterior</Text>
+                </TouchableOpacity>
+                <Text style={styles.pageIndicator}>{currentPage + 1} / {totalPages}</Text>
+                <TouchableOpacity onPress={() => setCurrentPage(Math.min(currentPage + 1, totalPages - 1))}>
+                  <Text style={styles.paginationButton}>Siguiente</Text>
+                </TouchableOpacity>
+              </View>
+              <TouchableOpacity onPress={() => setIsModalVisible(false)}>
+                <Text style={styles.modalCloseButton}>Cerrar</Text>
               </TouchableOpacity>
-            )}
-          />
-          <View style={styles.paginationContainer}>
-            <TouchableOpacity onPress={() => setCurrentPage(Math.max(currentPage - 1, 0))}>
-              <Text style={styles.paginationButton}>Anterior</Text>
-            </TouchableOpacity>
-            <Text style={styles.pageIndicator}>{currentPage + 1} / {totalPages}</Text>
-            <TouchableOpacity onPress={() => setCurrentPage(Math.min(currentPage + 1, totalPages - 1))}>
-              <Text style={styles.paginationButton}>Siguiente</Text>
-            </TouchableOpacity>
-          </View>
-          <TouchableOpacity onPress={() => setIsModalVisible(false)}>
-            <Text style={styles.modalCloseButton}>Cerrar</Text>
-          </TouchableOpacity>
+            </>
+          ) : (
+            <>
+              <Text style={styles.modalTitle}>{selectedInfoEvent.title}</Text>
+              <Text style={{ marginTop: 10, fontSize: 16, color: "#333" }}>
+                {selectedInfoEvent.description}
+              </Text>
+              <TouchableOpacity onPress={() => setSelectedInfoEvent(null)} >
+                <Text style={styles.modalCloseButton}>Volver</Text>
+              </TouchableOpacity>
+            </>
+          )}
         </View>
       </Modal>
+      
+      <TouchableOpacity 
+        style={styles.fabButton} 
+        onPress={() => setIsModalVisible(true)}
+      >
+        <Text style={styles.fabButtonText}>+</Text>
+      </TouchableOpacity>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 20, backgroundColor: "#f5f5f5" },
+  container: { 
+    flex: 1, 
+    padding: 20, 
+    backgroundColor: "#f5f5f5", 
+    position: "relative" // importante para que el botón se posicione relativo a este contenedor
+  },
   eventRow: { flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginBottom: 5 },
   deleteButton: { color: "red", fontSize: 14 },
   todayEventsContainer: { backgroundColor: "white", padding: 15, borderRadius: 10, marginVertical: 10, shadowColor: "#000", shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.1, shadowRadius: 5, elevation: 5, borderLeftWidth: 5, borderLeftColor: "#00adf5" },
@@ -237,7 +345,7 @@ const styles = StyleSheet.create({
   fabButton: {
     position: "absolute",
     right: 20,
-    bottom: 80,
+    bottom: 40,
     width: 60,
     height: 60,
     backgroundColor: "#66D2A5", // Verde menta
@@ -247,7 +355,7 @@ const styles = StyleSheet.create({
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.3,
-    shadowRadius: 4,
+    shadowRadius: 3.84,
     elevation: 5,
     zIndex: 1000,
   },
@@ -255,8 +363,32 @@ const styles = StyleSheet.create({
     fontSize: 30,
     color: "white",
     fontWeight: "bold",
-  }
-  
+    marginBottom: 2,
+  },
+  infoButton: {
+  backgroundColor: '#e6f7ff',
+  borderRadius: 10,
+  width: 15,
+  height: 25,
+  justifyContent: 'center',
+  alignItems: 'center',
+  shadowColor: '#000',
+  shadowOffset: { width: 0, height: 1 },
+  shadowOpacity: 0.2,
+  shadowRadius: 2,
+  elevation: 2,
+},
+infoButtonText: {
+  color: '#00adf5',
+  fontWeight: 'bold',
+},
+buttonRow: {
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  gap: 10, 
+  marginBottom: 10,
+}
 });
 
 export default BasicCalendar;

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { View, StyleSheet, StatusBar, TouchableWithoutFeedback } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { Avatar, Text } from "react-native-paper";
 import { useRouter } from "expo-router";
 import CarouselSection from "@/components/CarouselSection";
@@ -45,7 +46,7 @@ const HomeScreen: React.FC = () => {
   
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF" />
       <View style={styles.textContainer}>
         <Text style={[styles.headerText, styles.margin]}>Buenos Dias,</Text>
@@ -76,7 +77,7 @@ const HomeScreen: React.FC = () => {
         <Text style={[styles.newsHeader, styles.marginTop]}>Noticias</Text>
         <NewsSection />
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -119,7 +120,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between", // Alinear elementos al extremo
-    marginTop: 70,
+    marginTop: 0,
     marginBottom: -20,
     marginLeft: 20,
     marginRight: 20,

@@ -23,6 +23,25 @@ In the output, you'll find options to open the app in a
 - [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
 - [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
 
+⚠️ Note: If you're using modules that aren't supported by Expo Go (for example, some custom or third-party native modules), you'll need to use a native build. See the next section for details.
+
+## Run directly on Android (device or emulator)
+
+To run the app directly on an Android device or emulator, use:
+
+```bash
+npx expo run:android
+```
+
+### Requirements
+Before using it, make sure you have:
+
+✅ Android Studio installed.
+
+✅ A running emulator or a connected device with USB debugging enabled.
+
+✅ Environment variables such as ANDROID_HOME configured correctly.
+
 You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
 
 ## Get a fresh project

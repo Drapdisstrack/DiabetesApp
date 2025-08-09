@@ -50,7 +50,7 @@ const SignUp: React.FC = () => {
         <Text style={fontStyle.haveAccountText}>
           ¿Ya tienes una cuenta?{" "} </Text>
           <TouchableOpacity onPress={() => router.navigate("./SignIn")}>
-            <Text style={fontStyle.haveAccount2Text}>Inicia Sesión</Text>
+            <Text style={fontStyle.haveAccount2Text}>Iniciar Sesión</Text>
           </TouchableOpacity>
       </View>
       

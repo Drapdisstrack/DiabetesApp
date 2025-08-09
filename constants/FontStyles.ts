@@ -66,7 +66,7 @@ export const fontStyle= StyleSheet.create ({
         fontWeight: 'bold',
     },
     textInput: {
-        width: '85%',
+        width: '100%',
         height: 50,
         borderColor: '#ddd',
         borderWidth: 1,
@@ -74,7 +74,6 @@ export const fontStyle= StyleSheet.create ({
         paddingLeft: 15,
         paddingRight: 45,
         marginVertical: 10,
-        marginBottom: 5,
         backgroundColor: Colors.FontWhite,
     },
 })

@@ -91,8 +91,9 @@ class Form extends Component<FormProps, FormState> {
           />
         )}
         <TextInput
-          style={fontStyle.textInput}
+          style={[fontStyle.textInput, { width: '85%' }]}
           placeholder="Correo electrónico"
+          placeholderTextColor="gray"
           keyboardType="email-address"
           autoCapitalize="none"
           onChangeText={this.handleEmailChange}
@@ -101,6 +102,7 @@ class Form extends Component<FormProps, FormState> {
           <TextInput
             style={[fontStyle.textInput, { width: '100%' }]}
             placeholder="Ingresa tu contraseña"
+            placeholderTextColor="gray"
             secureTextEntry={!this.state.showPassword}
             onChangeText={this.handlePasswordChange}
           />
@@ -117,6 +119,7 @@ class Form extends Component<FormProps, FormState> {
             <TextInput
               style={[fontStyle.textInput, { width: '100%' }]}
               placeholder="Confirma tu contraseña"
+              placeholderTextColor="gray"
               secureTextEntry={!this.state.showPassword}
               onChangeText={this.handleConfirmPasswordChange}
             />
