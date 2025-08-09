@@ -40,6 +40,7 @@ const DatePicker: React.FC<DatePickerProps> = ({
           onChange={onChange}
           maximumDate={new Date()}
           style={styles.datePicker}
+          themeVariant="light"
         />
       ) : (
         <>

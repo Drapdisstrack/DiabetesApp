@@ -5,6 +5,8 @@ import NextButton from "../components/NextButton";
 import { useRouter } from "expo-router";
 import { auth, db } from "./auth/firebase";
 import { doc, updateDoc } from "firebase/firestore";
+import { Provider as PaperProvider } from "react-native-paper";
+import { LightTheme } from "../constants/Theme";
 
 const BirthdateScreen: React.FC = () => {
   const router = useRouter();
@@ -29,12 +31,14 @@ const BirthdateScreen: React.FC = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <Image source={require("../assets/images/date.png")} style={styles.image} />
-      <Text style={styles.headline}>Seleccione su fecha de nacimiento</Text>
-      <DatePicker selectedDate={selectedDate} onDateChange={handleDateChange} />
-      <NextButton onSubmit={handleSubmit} />
-    </View>
+    <PaperProvider theme={LightTheme}>
+      <View style={styles.container}>
+        <Image source={require("../assets/images/date.png")} style={styles.image} />
+        <Text style={styles.headline}>Seleccione su fecha de nacimiento</Text>
+        <DatePicker selectedDate={selectedDate} onDateChange={handleDateChange} />
+        <NextButton onSubmit={handleSubmit} />
+      </View>
+    </PaperProvider>
   );
 };
 
@@ -43,6 +47,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: "#FFFFFF",
   },
   image: {
     width: 100,
@@ -51,6 +56,7 @@ const styles = StyleSheet.create({
   headline: {
     fontSize: 20,
     marginBottom: 20,
+    color: "#000000",
   },
 });
 

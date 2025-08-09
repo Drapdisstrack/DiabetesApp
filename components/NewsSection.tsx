@@ -39,6 +39,22 @@ const newsData: NewsItem[] = [
     backgroundColor: "#EEA63A",
     url: "https://www.gob.mx/salud/articulos/alimentacion-sana-y-balanceada-para-una-buena-salud#:~:text=reducir%20la%20productividad.-,La%20nutrici%C3%B3n%20adecuada%20se%20refiere%20a%20la%20ingesta%20de%20alimentos,fundamental%20para%20una%20buena%20salud.",
   },
+  {
+    title: "Síguenos en Facebook",
+    description: "Últimas noticias y consejos de salud",
+    icon: "facebook",
+    image: require("../assets/images/facebook.png"),
+    backgroundColor: "#3b5998",
+    url: "https://www.facebook.com/share/12JyevZNb23/?mibextid=wwXIfr", 
+  },
+  {
+    title: "Síguenos en Instagram",
+    description: "Imágenes, historias y más",
+    icon: "instagram", 
+    image: require("../assets/images/instagram.png"),
+    backgroundColor: "#E1306C",
+    url: "https://www.instagram.com/nutreymuevetuvidauady?igsh=dnF4bGh0OHN0M3Rp",
+  },
 ];
 
 
@@ -87,7 +103,7 @@ const NewsSection: React.FC = () => {
 
 const styles = StyleSheet.create({
   newsContainer: {
-    maxHeight: screenHeight * 0.5,
+    maxHeight: screenHeight * 0.45,
   },
   newsItem: {
     flexDirection: "row",
