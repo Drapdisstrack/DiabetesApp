@@ -46,7 +46,7 @@ const Profile: React.FC = () => {
 
         const limit = 100 * Math.pow(data.level, 2);
         setLimit(limit);
-        setProgress(data.exp / limit);
+        setProgress(Math.min(1, Math.max(0, data.exp / limit)));
 
         // Cargar valores en los inputs
         setName(data.name || "");
