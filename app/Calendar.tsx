@@ -20,6 +20,19 @@ const today = new Intl.DateTimeFormat("es-MX", {
   day: "2-digit"
 }).format(new Date()).split("/").reverse().join("-");
 
+// Devuelve todas las fechas del mes visible en formato YYYY-MM-DD
+const getDaysInMonth = (ym: string): string[] => {
+  const [y, m] = ym.split("-");
+  const year = Number(y);
+  const month = Number(m); // 1..12
+  const daysInMonth = new Date(year, month, 0).getDate();
+  const mm = String(month).padStart(2, "0");
+  return Array.from({ length: daysInMonth }, (_, i) =>
+    `${year}-${mm}-${String(i + 1).padStart(2, "0")}`
+  );
+};
+
+
 const availableEvents = [
   { 
     title: "Camina 20 minutos al aire libre",
@@ -118,6 +131,7 @@ export function BasicCalendar() {
   const [selectedDate, setSelectedDate] = useState(today);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
+  const [visibleMonth, setVisibleMonth] = useState(today.slice(0, 7)); // "YYYY-MM"
   const eventsPerPage = 5;
   const totalPages = Math.ceil(availableEvents.length / eventsPerPage);
   type Event = {
@@ -153,8 +167,34 @@ export function BasicCalendar() {
     saveEvents(updatedEvents);
   };
 
-  const getCustomMarkedDates = () => {
-    const marked: Record<string, any> = {};
+  type MarkedDates = Record< string,
+  {
+    customStyles: {
+      container?: any;
+      text?: any;
+    };
+  }>;
+
+  const getCustomMarkedDates = (): MarkedDates => {
+    const marked: MarkedDates = {};
+
+    // 1) Marcar TODOS los días del mes visible con borde rojo por defecto
+    const monthDays = getDaysInMonth(visibleMonth);
+    monthDays.forEach((date) => {
+      marked[date] = {
+        customStyles: {
+          container: {
+            backgroundColor: "#fff",
+            borderColor: "red",     // 🔴 borde rojo por defecto
+            borderWidth: 1,
+            borderRadius: 10,
+          },
+          text: {
+            color: "#000",
+          },
+        },
+      };
+    });
 
     Object.keys(eventsByDate).forEach((date) => {
       const eventCount = eventsByDate[date]?.length || 0;
@@ -162,11 +202,9 @@ export function BasicCalendar() {
       let backgroundColor = "#ffffff"; // default
 
       if (eventCount === 1) {
-        backgroundColor = "#66D2A5"; // verde
-      } else if (eventCount === 2) {
-        backgroundColor = "#FFD700"; // amarillo
-      } else if (eventCount >= 3) {
-        backgroundColor = "#FF6B6B"; // rojo
+        backgroundColor = "#C3F8B4"; // verde
+      } else if (eventCount >= 2) {
+        backgroundColor = "#5EC465"; // verde más oscuro
       }
 
       marked[date] = {
@@ -175,7 +213,6 @@ export function BasicCalendar() {
             backgroundColor,
             borderRadius: 10,
             borderWidth: 0,
-            borderColor: "#000",
           },
           text: {
             color: "#000",
@@ -185,51 +222,40 @@ export function BasicCalendar() {
       };
     });
 
-    // Asegurar que el día seleccionado también se resalte
-    if (!marked[selectedDate]) {
-      marked[selectedDate] = {
-        customStyles: {
-          container: {
-            backgroundColor: "#fff",
-            borderColor: "#000",
-            borderRadius: 10,
-            borderWidth: 2,
-          },
-          text: {
-            color: "#000",
-            fontWeight: "bold",
-          },
-        },
-      };
-    }
-
-    if (marked[today]) {
-      marked[today].customStyles.container.borderWidth = 2;
-      marked[today].customStyles.container.borderColor = "#00adf5";
-    } else {
-      marked[today] = {
-        customStyles: {
-          container: {
-            borderColor: "#00adf5",
-            borderWidth: 2,
-            borderRadius: 10,
-          },
-          text: {
-            color: "#00adf5",
-            fontWeight: "bold",
-          },
-        },
-      };
-    }
-
-    return marked;
+    // 3) Día seleccionado: borde negro más grueso
+  if (!marked[selectedDate]) {
+    marked[selectedDate] = { customStyles: { container: { borderRadius: 10 }, text: {} } };
+  }
+  marked[selectedDate].customStyles.container = {
+    ...marked[selectedDate].customStyles.container,
+    borderColor: "#000",
+    borderWidth: 3,
   };
+
+  // 4) Hoy: borde azul (si coincide con seleccionado, prevalece el borde más grueso)
+  if (!marked[today]) {
+    marked[today] = { customStyles: { container: { borderRadius: 10 }, text: {} } };
+  }
+  marked[today].customStyles.container = {
+    ...marked[today].customStyles.container,
+    borderColor: "#00adf5",
+    borderWidth: Math.max( marked[today].customStyles.container?.borderWidth ?? 0, 3 ),
+  };
+  marked[today].customStyles.text = {
+    ...marked[today].customStyles.text,
+    color: "#00adf5",
+    fontWeight: "bold",
+  };
+
+  return marked;
+};
 
   return (
     <View style={styles.container}>
 
       <Calendar
         onDayPress={handleDatePress}
+        onMonthChange={(m) => setVisibleMonth(`${m.year}-${String(m.month).padStart(2, "0")}`)}
         markingType="custom"
         markedDates={getCustomMarkedDates()}
         theme={{
